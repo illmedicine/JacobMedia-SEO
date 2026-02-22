@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JACOBMEDIA | Live Streaming & Content Creator</title>
+    <meta name="description" content="JACOBMEDIA - Live streaming on Kick. Watch poppayo live, catch up on VODs, and join the SolPump action.">
+    <meta name="keywords" content="JACOBMEDIA, poppayo, Kick, live stream, SolPump, Solana, content creator">
+    <meta property="og:title" content="JACOBMEDIA | Live Streaming & Content Creator">
+    <meta property="og:description" content="Watch poppayo live on Kick. Join the community and check out SolPump.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="bg-grid"></div>
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">&#9670;</span>
+                <span class="logo-text">JACOB<span class="logo-accent">MEDIA</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#stream" class="nav-link">Stream</a>
+                <a href="#solpump" class="nav-link">SolPump</a>
+                <a href="#videos" class="nav-link">Videos</a>
+                <a href="#community" class="nav-link">Community</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="btn btn-kick btn-sm">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
+                    </svg>
+                    Watch Live
+                </a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#stream" class="mobile-link">Stream</a>
+        <a href="#solpump" class="mobile-link">SolPump</a>
+        <a href="#videos" class="mobile-link">Videos</a>
+        <a href="#community" class="mobile-link">Community</a>
+        <div class="mobile-actions">
+            <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="btn btn-kick">
+                Watch on Kick
+            </a>
+            <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener" class="btn btn-sol">
+                SolPump
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                STREAMING ON KICK
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">JACOB</span>
+                <span class="title-line title-accent">MEDIA</span>
+            </h1>
+            <p class="hero-subtitle">
+                Live content creator streaming on Kick. Join the community, catch the action, and ride the SolPump wave.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="btn btn-kick btn-lg">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                        <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
+                    </svg>
+                    Watch on Kick
+                </a>
+                <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener" class="btn btn-sol btn-lg">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M7.5 14.5h9l-1.5-2H9l-1.5 2zm0-3h9l-1.5-2H9l-1.5 2zm0-3h9l-1.5-2H9l-1.5 2z"/>
+                    </svg>
+                    SolPump
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value" data-count="24">0</span><span class="stat-suffix">/7</span>
+                    <span class="stat-label">Live Content</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">KICK</span>
+                    <span class="stat-label">Platform</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">SOL</span>
+                    <span class="stat-label">SolPump Active</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stream Section -->
+    <section class="section section-stream" id="stream">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">LIVE STREAM</span>
+                <h2 class="section-title">Catch the <span class="text-kick">Action</span></h2>
+                <p class="section-desc">Never miss a stream. Watch live on Kick or catch up on past broadcasts and highlights.</p>
+            </div>
+            <div class="stream-embed">
+                <div class="embed-wrapper">
+                    <div class="embed-placeholder">
+                        <div class="embed-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <h3>poppayo on Kick</h3>
+                        <p>Click below to watch live or browse videos</p>
+                        <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="btn btn-kick btn-lg">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
+                            </svg>
+                            Go to Kick Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="stream-features">
+                <div class="feature-card">
+                    <div class="feature-icon">&#9889;</div>
+                    <h3>Live Streams</h3>
+                    <p>Catch poppayo live on Kick with interactive chat and real-time engagement.</p>
+                    <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="feature-link">Watch Now &rarr;</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#127916;</div>
+                    <h3>VODs & Replays</h3>
+                    <p>Missed a stream? Browse the full library of past broadcasts and highlights.</p>
+                    <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="feature-link">Browse Videos &rarr;</a>
+                </div>
+                <div class="feature-card card-sol">
+                    <div class="feature-icon">&#9830;</div>
+                    <h3>SolPump</h3>
+                    <p>Join the SolPump action. Wager, compete on leaderboards, and win SOL rewards.</p>
+                    <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener" class="feature-link feature-link-sol">Join SolPump &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SolPump Section -->
+    <section class="section section-solpump" id="solpump">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag tag-sol">SOLPUMP</span>
+                <h2 class="section-title">Ride the <span class="text-sol">SolPump</span> Wave</h2>
+                <p class="section-desc">Compete on leaderboards, wager with SOL, and earn rewards. Join the SolPump community through JACOBMEDIA.</p>
+            </div>
+            <div class="solpump-grid">
+                <div class="sol-card sol-card-main">
+                    <div class="sol-card-glow"></div>
+                    <div class="sol-card-content">
+                        <div class="sol-icon-large">
+                            <svg viewBox="0 0 48 48" width="80" height="80">
+                                <defs>
+                                    <linearGradient id="solGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#9945FF"/>
+                                        <stop offset="50%" style="stop-color:#14F195"/>
+                                        <stop offset="100%" style="stop-color:#00D1FF"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="24" cy="24" r="22" fill="none" stroke="url(#solGrad)" stroke-width="2"/>
+                                <path d="M14 30h20l-3-4H17l-3 4zm0-6h20l-3-4H17l-3 4zm0-6h20l-3-4H17l-3 4z" fill="url(#solGrad)"/>
+                            </svg>
+                        </div>
+                        <h3>SolPump Leaderboard</h3>
+                        <p>Track your rank, compete with others, and climb the leaderboard. Wager SOL and win big rewards every week.</p>
+                        <div class="sol-stats-row">
+                            <div class="sol-stat">
+                                <span class="sol-stat-label">Weekly Prize Pool</span>
+                                <span class="sol-stat-value">SOL Rewards</span>
+                            </div>
+                            <div class="sol-stat">
+                                <span class="sol-stat-label">Platform</span>
+                                <span class="sol-stat-value">Solana</span>
+                            </div>
+                        </div>
+                        <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener" class="btn btn-sol btn-lg btn-full">
+                            <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20">
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/>
+                            </svg>
+                            Enter SolPump
+                        </a>
+                    </div>
+                </div>
+                <div class="sol-card sol-card-info">
+                    <h4>How It Works</h4>
+                    <div class="sol-steps">
+                        <div class="sol-step">
+                            <span class="step-num">01</span>
+                            <div>
+                                <h5>Connect</h5>
+                                <p>Visit SolPump through JACOBMEDIA's link</p>
+                            </div>
+                        </div>
+                        <div class="sol-step">
+                            <span class="step-num">02</span>
+                            <div>
+                                <h5>Wager</h5>
+                                <p>Place your SOL and compete on the leaderboard</p>
+                            </div>
+                        </div>
+                        <div class="sol-step">
+                            <span class="step-num">03</span>
+                            <div>
+                                <h5>Win</h5>
+                                <p>Climb the ranks and earn weekly SOL rewards</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener" class="btn btn-outline-sol btn-full">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="section section-videos" id="videos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CONTENT</span>
+                <h2 class="section-title">Latest <span class="text-kick">Videos</span></h2>
+                <p class="section-desc">Check out the latest streams, highlights, and content from poppayo on Kick.</p>
+            </div>
+            <div class="videos-grid">
+                <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="video-card">
+                    <div class="video-thumb">
+                        <div class="video-play">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <span class="video-badge">VOD</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Latest Stream</h3>
+                        <p>Watch the most recent broadcast</p>
+                    </div>
+                </a>
+                <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="video-card">
+                    <div class="video-thumb">
+                        <div class="video-play">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <span class="video-badge">HIGHLIGHT</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Best Moments</h3>
+                        <p>Top highlights and clips</p>
+                    </div>
+                </a>
+                <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="video-card">
+                    <div class="video-thumb">
+                        <div class="video-play">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <span class="video-badge">REPLAY</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Past Broadcasts</h3>
+                        <p>Browse the full VOD library</p>
+                    </div>
+                </a>
+            </div>
+            <div class="videos-cta">
+                <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="btn btn-kick btn-lg">
+                    View All Videos on Kick
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community / CTA Section -->
+    <section class="section section-community" id="community">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-bg"></div>
+                <div class="cta-content">
+                    <h2>Join the <span class="text-gradient">JACOBMEDIA</span> Community</h2>
+                    <p>Follow poppayo on Kick, join the SolPump leaderboard, and become part of the crew.</p>
+                    <div class="cta-buttons">
+                        <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" class="btn btn-kick btn-lg">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
+                            </svg>
+                            Follow on Kick
+                        </a>
+                        <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener" class="btn btn-sol btn-lg">
+                            <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20">
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/>
+                            </svg>
+                            Join SolPump
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <span class="logo-icon">&#9670;</span>
+                        <span class="logo-text">JACOB<span class="logo-accent">MEDIA</span></span>
+                    </a>
+                    <p>Live content creator streaming on Kick. Powered by SolPump.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener">Kick Channel</a>
+                    <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener">SolPump</a>
+                    <a href="#stream">Live Stream</a>
+                    <a href="#videos">Videos</a>
+                </div>
+                <div class="footer-links">
+                    <h4>SolPump</h4>
+                    <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener">Leaderboard</a>
+                    <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener">Join Now</a>
+                    <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener">Rewards</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JACOBMEDIA. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="https://kick.com/poppayo/videos" target="_blank" rel="noopener" aria-label="Kick" class="social-link social-kick">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://julianjackhammer.com/solpump" target="_blank" rel="noopener" aria-label="SolPump" class="social-link social-sol">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
