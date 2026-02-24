@@ -53,7 +53,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height);
+    scroll-padding-top: calc(var(--nav-height) + 36px);
 }
 
 body {
@@ -164,12 +164,56 @@ img {
 }
 
 /* =============================================
+   Top Bar
+   ============================================= */
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.top-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.top-bar-container {
+    display: flex;
+    gap: 24px;
+    padding: 0 24px;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+
+.top-bar a {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color var(--transition-fast);
+}
+
+.top-bar a:hover {
+    color: var(--text-primary);
+}
+
+/* =============================================
    Navigation
    ============================================= */
 
 .navbar {
     position: fixed;
-    top: 0;
+    top: 36px;
     left: 0;
     right: 0;
     height: var(--nav-height);
@@ -278,7 +322,7 @@ img {
 .mobile-menu {
     display: none;
     position: fixed;
-    top: var(--nav-height);
+    top: calc(var(--nav-height) + 36px);
     left: 0;
     right: 0;
     background: rgba(10, 10, 15, 0.98);
@@ -423,7 +467,7 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: calc(var(--nav-height) + 40px) 24px 40px;
+    padding: calc(var(--nav-height) + 76px) 24px 40px;
     position: relative;
     z-index: 1;
 }
@@ -1085,29 +1129,67 @@ img {
    Videos Section
    ============================================= */
 
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+.content-showcase {
     margin-bottom: 40px;
 }
 
-.video-card {
+.showcase-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.kick-vod-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid rgba(83, 252, 24, 0.15);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-med);
+}
+
+.kick-vod-card:hover {
+    border-color: rgba(83, 252, 24, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(83, 252, 24, 0.1);
+}
+
+.kick-vod-card .video-thumb {
+    aspect-ratio: 21 / 9;
+}
+
+.ig-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.ig-card {
+    display: block;
     background: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: all var(--transition-med);
-    display: block;
 }
 
-.video-card:hover {
-    border-color: rgba(83, 252, 24, 0.15);
+.ig-card:hover {
+    border-color: rgba(225, 48, 108, 0.4);
     transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(225, 48, 108, 0.1);
+}
+
+.ig-card .video-thumb {
+    aspect-ratio: 4 / 5;
 }
 
 .video-thumb {
-    aspect-ratio: 16 / 9;
     background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
     display: flex;
     align-items: center;
@@ -1120,41 +1202,66 @@ img {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(83, 252, 24, 0.05), rgba(153, 69, 255, 0.05));
+    background: rgba(0, 0, 0, 0.4);
+    transition: background var(--transition-med);
+}
+
+.video-card:hover .video-thumb::before {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .video-play {
     width: 64px;
     height: 64px;
-    background: rgba(83, 252, 24, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--kick);
+    color: #fff;
     transition: all var(--transition-med);
     z-index: 1;
 }
 
+.ig-card .video-play {
+    width: 48px;
+    height: 48px;
+}
+
 .video-card:hover .video-play {
-    background: var(--kick);
+    background: #fff;
     color: #000;
     transform: scale(1.1);
+}
+
+.kick-vod-card:hover .video-play {
+    background: var(--kick);
+    color: #000;
 }
 
 .video-badge {
     position: absolute;
     top: 12px;
     right: 12px;
-    padding: 4px 10px;
-    background: rgba(0, 0, 0, 0.6);
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
     border-radius: 6px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--kick);
+    letter-spacing: 0.05em;
     z-index: 1;
+}
+
+.source-kick {
+    color: var(--kick);
+    border: 1px solid rgba(83, 252, 24, 0.3);
+}
+
+.source-ig {
+    color: #E1306C;
+    border: 1px solid rgba(225, 48, 108, 0.3);
 }
 
 .video-info {
@@ -1163,18 +1270,15 @@ img {
 
 .video-info h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 4px;
+    color: var(--text-primary);
 }
 
 .video-info p {
     font-size: 0.9rem;
     color: var(--text-muted);
-}
-
-.videos-cta {
-    text-align: center;
 }
 
 /* =============================================
@@ -1315,6 +1419,31 @@ img {
     background: var(--kick);
     color: #000;
     border-color: var(--kick);
+}
+
+.social-ig:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #fff;
+    border-color: transparent;
+}
+
+.social-tiktok:hover {
+    background: #000;
+    color: #fff;
+    border-color: #69C9D0;
+    box-shadow: -2px -2px 0 #69C9D0, 2px 2px 0 #EE1D52;
+}
+
+.social-yt:hover {
+    background: #FF0000;
+    color: #fff;
+    border-color: #FF0000;
+}
+
+.social-discord:hover {
+    background: #5865F2;
+    color: #fff;
+    border-color: #5865F2;
 }
 
 .social-sol:hover {
