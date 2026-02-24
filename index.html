@@ -248,6 +248,42 @@
                     </a>
                 </div>
             </div>
+
+            <!-- SolPump Leaderboard -->
+            <div class="solpump-leaderboard">
+                <div class="leaderboard-header">
+                    <div class="leaderboard-title">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 20h.01"></path>
+                            <path d="M7 20v-4"></path>
+                            <path d="M12 20v-8"></path>
+                            <path d="M17 20V8"></path>
+                            <path d="M22 4v16"></path>
+                        </svg>
+                        <h3>Top Affiliates</h3>
+                    </div>
+                    <div class="leaderboard-filters">
+                        <button class="filter-btn active" data-sort="wagered">Most Wagered</button>
+                        <button class="filter-btn" data-sort="commission">Highest Commission</button>
+                    </div>
+                </div>
+                <div class="leaderboard-table-container">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>User</th>
+                                <th>Wagered (SOL)</th>
+                                <th>Commission (SOL)</th>
+                                <th>Last Seen</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 

@@ -140,4 +140,78 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // SolPump Leaderboard Data
+    const leaderboardData = [
+        { user: 'YNSage', wagered: 8.6803, commission: 0.0084, lastSeen: '12/27/2025' },
+        { user: 'JayWooki', wagered: 1.1610, commission: 0.0003, lastSeen: '12/13/2025' },
+        { user: 'WTOMXX', wagered: 0.6115, commission: 0.0004, lastSeen: '12/28/2025' },
+        { user: 'WTOMX', wagered: 0.2117, commission: 0.0002, lastSeen: '12/18/2025' },
+        { user: 'jusagamblerkick', wagered: 0.1898, commission: 0.0000, lastSeen: '12/17/2025' },
+        { user: 'Victamna', wagered: 0.1214, commission: 0.0000, lastSeen: '01/18/2026' },
+        { user: 'BAKASTA987', wagered: 0.1078, commission: 0.0001, lastSeen: '12/17/2025' },
+        { user: 'WAGURIANYA090', wagered: 0.0771, commission: 0.0000, lastSeen: '12/17/2025' },
+        { user: 'IAMKURUSO', wagered: 0.0701, commission: 0.0000, lastSeen: '12/17/2025' },
+        { user: 'KICK-YOPOPPA', wagered: 0.0689, commission: 0.0000, lastSeen: '12/17/2025' }
+    ];
+
+    const leaderboardBody = document.getElementById('leaderboard-body');
+    
+    if (leaderboardBody) {
+        function renderLeaderboard(data) {
+            leaderboardBody.innerHTML = '';
+            data.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                
+                // Add rank classes for top 3
+                let rankClass = '';
+                if (index === 0) rankClass = 'rank-1';
+                else if (index === 1) rankClass = 'rank-2';
+                else if (index === 2) rankClass = 'rank-3';
+
+                tr.innerHTML = `
+                    <td><span class="rank-badge ${rankClass}">${index + 1}</span></td>
+                    <td class="user-cell">
+                        <div class="user-avatar">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${row.user}&backgroundColor=1c1c28" alt="${row.user}">
+                        </div>
+                        <span class="user-name">${row.user}</span>
+                    </td>
+                    <td class="wagered-cell">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 15h8l-2-3H10l-2 3zm0-4h8l-2-3H10l-2 3z"/>
+                        </svg>
+                        ${row.wagered.toFixed(4)}
+                    </td>
+                    <td class="commission-cell">${row.commission.toFixed(4)}</td>
+                    <td class="date-cell">${row.lastSeen}</td>
+                `;
+                leaderboardBody.appendChild(tr);
+            });
+        }
+
+        // Initial render
+        renderLeaderboard(leaderboardData);
+
+        // Sort functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                const sortType = e.target.dataset.sort;
+                let sortedData = [...leaderboardData];
+                
+                if (sortType === 'wagered') {
+                    sortedData.sort((a, b) => b.wagered - a.wagered);
+                } else if (sortType === 'commission') {
+                    sortedData.sort((a, b) => b.commission - a.commission);
+                }
+                
+                renderLeaderboard(sortedData);
+            });
+        });
+    }
 });
