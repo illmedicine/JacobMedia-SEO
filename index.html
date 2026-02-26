@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JACOBMEDIA | Jacob Schneider — Developer & Creator</title>
-    <meta name="description" content="Jacob Schneider — Software developer, founder of illyRobotic AI, and content creator. Building web apps, AI tools, and community projects.">
+    <meta name="description" content="Jacob Schneider — Software developer, co-founder of illyRobotic AI, and content creator. Building web apps, AI tools, and community projects.">
     <meta name="keywords" content="Jacob Schneider, JACOBMEDIA, software developer, illyRobotic AI, web development, portfolio, GitHub">
     <meta property="og:title" content="JACOBMEDIA | Jacob Schneider — Developer & Creator">
-    <meta property="og:description" content="Software developer, founder of illyRobotic AI, and content creator. View my projects and get in touch.">
+    <meta property="og:description" content="Software developer, co-founder of illyRobotic AI, and content creator. View my projects and get in touch.">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,7 +119,7 @@
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.06);
             border-radius: var(--radius-lg);
-            padding: 32px 28px;
+            overflow: hidden;
             transition: all var(--transition-fast);
             display: flex;
             flex-direction: column;
@@ -129,6 +129,59 @@
             transform: translateY(-6px);
             box-shadow: 0 16px 48px rgba(153, 69, 255, 0.08);
         }
+        /* Featured project card */
+        .project-card.project-featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-color: rgba(88, 101, 242, 0.2);
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.04), rgba(153, 69, 255, 0.04));
+        }
+        .project-card.project-featured:hover {
+            border-color: rgba(88, 101, 242, 0.4);
+            box-shadow: 0 20px 60px rgba(88, 101, 242, 0.12);
+        }
+        .project-card.project-featured .project-preview { min-height: 260px; }
+        .project-card.project-featured .project-body { padding: 36px 32px; }
+        .project-card.project-featured h3 { font-size: 1.4rem; }
+        .project-card.project-featured .project-featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 5px 14px;
+            border-radius: 50px;
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid rgba(88, 101, 242, 0.2);
+            color: var(--discord);
+            margin-bottom: 12px;
+        }
+        .project-card.project-featured .project-featured-badge svg { width: 12px; height: 12px; }
+        /* Preview image area */
+        .project-preview {
+            width: 100%;
+            min-height: 180px;
+            background: rgba(255,255,255,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .project-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .project-card:hover .project-preview img { transform: scale(1.03); }
+        .project-preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6));
+            pointer-events: none;
+        }
+        .project-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; }
         .project-header {
             display: flex;
             justify-content: space-between;
@@ -146,6 +199,7 @@
         .project-icon.pi-js { background: rgba(240, 219, 79, 0.1); color: #F0DB4F; }
         .project-icon.pi-css { background: rgba(86, 61, 124, 0.15); color: #9B6DFF; }
         .project-icon.pi-ts { background: rgba(49, 120, 198, 0.12); color: #3178C6; }
+        .project-icon.pi-ai { background: rgba(88, 101, 242, 0.1); color: var(--discord); }
         .project-lang {
             font-size: 0.7rem;
             font-weight: 700;
@@ -170,25 +224,61 @@
         }
         .project-footer {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         .project-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
             transition: all var(--transition-fast);
         }
-        .project-link:hover { color: var(--sol-purple); gap: 10px; }
+        .project-link:hover { color: var(--sol-purple); border-color: rgba(153,69,255,0.3); background: rgba(153,69,255,0.06); }
+        .project-link-live {
+            background: rgba(20, 241, 149, 0.06);
+            border-color: rgba(20, 241, 149, 0.15);
+            color: var(--sol-green);
+        }
+        .project-link-live:hover { background: rgba(20, 241, 149, 0.12); border-color: rgba(20, 241, 149, 0.3); color: var(--sol-green); }
         .project-tag {
             font-size: 0.75rem;
             color: var(--text-muted);
             padding: 4px 10px;
             background: rgba(255,255,255,0.03);
             border-radius: 50px;
+            margin-left: auto;
+        }
+        .projects-footer-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .projects-footer-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            padding: 12px 28px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.02);
+            transition: all var(--transition-fast);
+        }
+        .projects-footer-link a:hover { color: var(--text-primary); border-color: rgba(153,69,255,0.3); transform: translateY(-2px); }
+        @media (max-width: 768px) {
+            .project-card.project-featured {
+                grid-template-columns: 1fr;
+            }
+            .project-card.project-featured .project-preview { min-height: 180px; }
         }
 
         /* Tech Stack */
@@ -368,7 +458,7 @@
                 <span class="title-line title-accent">SCHNEIDER</span>
             </h1>
             <p class="hero-subtitle">
-                Software developer and founder of <strong>illyRobotic AI</strong>. Building web applications, AI-driven tools, and creative digital products.
+                Software developer and co-founder of <strong>illyRobotic AI</strong>. Building web applications, AI-driven tools, and creative digital products.
             </p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-sol btn-lg" style="background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); color: #000; font-weight: 700;">
@@ -382,7 +472,7 @@
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-value" data-count="4">0</span>
+                    <span class="stat-value" data-count="9">0</span>
                     <span class="stat-label">Public Projects</span>
                 </div>
                 <div class="stat-divider"></div>
@@ -417,7 +507,7 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p>
-                        I'm <span class="highlight">Jacob Schneider</span>, a software developer focused on building practical, impactful applications. I founded <span class="highlight">illyRobotic AI</span>, where I'm developing intelligent automation and AI-driven tools.
+                        I'm <span class="highlight">Jacob Schneider</span>, a software developer focused on building practical, impactful applications. I co-founded <span class="highlight">illyRobotic AI</span>, where I'm developing intelligent automation and AI-driven tools.
                     </p>
                     <p>
                         My work spans full-stack web development, crypto/blockchain projects, and creative media. I'm driven by solving real problems with clean code and thoughtful design.
@@ -447,7 +537,7 @@
                         </div>
                         <div class="about-detail-info">
                             <h4>Role</h4>
-                            <p>Founder & Developer @ illyRobotic AI</p>
+                            <p>Co-Founder & Developer @ illyRobotic AI</p>
                         </div>
                     </div>
                     <div class="about-detail-item">
@@ -488,84 +578,269 @@
             <div class="section-header">
                 <span class="section-tag">PORTFOLIO</span>
                 <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
-                <p class="section-desc">A selection of applications and tools I've built. All open-source on GitHub.</p>
+                <p class="section-desc">A selection of applications and tools I've built and co-founded. Open-source projects &amp; live products.</p>
             </div>
             <div class="projects-grid">
+                <!-- illyRobotic AI — Featured -->
+                <div class="project-card project-featured content-showcase">
+                    <div class="project-preview">
+                        <img src="https://www.illyrobotic-ai.com/og-image.png" alt="illyRobotic AI preview" onerror="this.onerror=null;this.parentElement.style.background='linear-gradient(135deg,rgba(88,101,242,0.15),rgba(153,69,255,0.1))';this.style.display='none';">
+                        <div class="project-preview-overlay"></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-featured-badge">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            CO-FOUNDER
+                        </span>
+                        <div class="project-header">
+                            <div class="project-icon pi-ai">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 2a4 4 0 014 4v2a4 4 0 01-8 0V6a4 4 0 014-4z"/><path d="M16 14H8a4 4 0 00-4 4v2h16v-2a4 4 0 00-4-4z"/><circle cx="9" cy="7" r="1" fill="currentColor"/><circle cx="15" cy="7" r="1" fill="currentColor"/></svg>
+                            </div>
+                            <span class="project-lang">AI / ML</span>
+                        </div>
+                        <h3>illyRobotic AI</h3>
+                        <p>AI-powered automation platform for intelligent workflows, natural language processing, and machine learning tools. Co-founded and actively developing cutting-edge AI solutions.</p>
+                        <div class="project-footer">
+                            <a href="https://www.illyrobotic-ai.com/" target="_blank" rel="noopener" class="project-link project-link-live">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                Live Site
+                            </a>
+                            <span class="project-tag">AI Platform</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Couch-Buddies -->
                 <div class="project-card content-showcase">
-                    <div class="project-header">
-                        <div class="project-icon pi-js">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.975.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.81-.18-1.26-.63-1.755-1.14l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
-                        </div>
-                        <span class="project-lang">JavaScript</span>
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/Couch-Buddies" alt="Couch-Buddies repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
                     </div>
-                    <h3>Couch-Buddies</h3>
-                    <p>A social platform application connecting users for shared entertainment experiences. Built with JavaScript and modern web APIs.</p>
-                    <div class="project-footer">
-                        <a href="https://github.com/illmedicine/Couch-Buddies" target="_blank" rel="noopener" class="project-link">
-                            View on GitHub
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                        <span class="project-tag">Web App</span>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-js">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.975.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.81-.18-1.26-.63-1.755-1.14l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+                            </div>
+                            <span class="project-lang">JavaScript</span>
+                        </div>
+                        <h3>Couch-Buddies</h3>
+                        <p>A social platform application connecting users for shared entertainment experiences. Built with JavaScript and modern web APIs.</p>
+                        <div class="project-footer">
+                            <a href="https://illmedicine.github.io/Couch-Buddies/" target="_blank" rel="noopener" class="project-link project-link-live">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                Live Site
+                            </a>
+                            <a href="https://github.com/illmedicine/Couch-Buddies" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">Web App</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Meme-Responder -->
                 <div class="project-card content-showcase">
-                    <div class="project-header">
-                        <div class="project-icon pi-js">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.975.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.81-.18-1.26-.63-1.755-1.14l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
-                        </div>
-                        <span class="project-lang">JavaScript</span>
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/jacob-media/Meme-Responder" alt="Meme-Responder repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
                     </div>
-                    <h3>Meme-Responder</h3>
-                    <p>A web service that allows users to submit screenshots of conversations and generates relevant meme responses using web search and AI.</p>
-                    <div class="project-footer">
-                        <a href="https://github.com/jacob-media/Meme-Responder" target="_blank" rel="noopener" class="project-link">
-                            View on GitHub
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                        <span class="project-tag">AI / Web Service</span>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-js">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.975.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.81-.18-1.26-.63-1.755-1.14l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+                            </div>
+                            <span class="project-lang">JavaScript</span>
+                        </div>
+                        <h3>Meme-Responder</h3>
+                        <p>A web service that allows users to submit screenshots of conversations and generates relevant meme responses using web search and AI.</p>
+                        <div class="project-footer">
+                            <a href="https://github.com/jacob-media/Meme-Responder" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">AI / Web Service</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 6IXX-Lending-Partners-Inc -->
                 <div class="project-card content-showcase">
-                    <div class="project-header">
-                        <div class="project-icon pi-ts">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 011.306.34v2.458a3.95 3.95 0 00-.643-.361 5.093 5.093 0 00-.717-.26 5.453 5.453 0 00-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 00-.623.242c-.17.104-.3.229-.393.374a.888.888 0 00-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 01-1.012 1.085 4.38 4.38 0 01-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 01-1.84-.164 5.544 5.544 0 01-1.512-.493v-2.63a5.033 5.033 0 003.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 00-.074-1.089 2.12 2.12 0 00-.537-.5 5.597 5.597 0 00-.807-.444 27.72 27.72 0 00-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 011.47-.629 7.536 7.536 0 011.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg>
-                        </div>
-                        <span class="project-lang">TypeScript</span>
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/6IXX-Lending-Partners-Inc" alt="6IXX Lending Partners repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
                     </div>
-                    <h3>6IXX Lending Partners</h3>
-                    <p>A lending platform application for financial services. Built with TypeScript for type-safe, scalable architecture.</p>
-                    <div class="project-footer">
-                        <a href="https://github.com/illmedicine/6IXX-Lending-Partners-Inc" target="_blank" rel="noopener" class="project-link">
-                            View on GitHub
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                        <span class="project-tag">FinTech</span>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-ts">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 011.306.34v2.458a3.95 3.95 0 00-.643-.361 5.093 5.093 0 00-.717-.26 5.453 5.453 0 00-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 00-.623.242c-.17.104-.3.229-.393.374a.888.888 0 00-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 01-1.012 1.085 4.38 4.38 0 01-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 01-1.84-.164 5.544 5.544 0 01-1.512-.493v-2.63a5.033 5.033 0 003.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 00-.074-1.089 2.12 2.12 0 00-.537-.5 5.597 5.597 0 00-.807-.444 27.72 27.72 0 00-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 011.47-.629 7.536 7.536 0 011.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg>
+                            </div>
+                            <span class="project-lang">TypeScript</span>
+                        </div>
+                        <h3>6IXX Lending Partners</h3>
+                        <p>A lending platform application for financial services. Built with TypeScript for type-safe, scalable architecture.</p>
+                        <div class="project-footer">
+                            <a href="https://github.com/illmedicine/6IXX-Lending-Partners-Inc" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">FinTech</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- JacobMedia-SEO -->
                 <div class="project-card content-showcase">
-                    <div class="project-header">
-                        <div class="project-icon pi-css">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.83-9.617H8.06l-.26-2.852h9.79z"/></svg>
-                        </div>
-                        <span class="project-lang">CSS / HTML</span>
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/JacobMedia-SEO" alt="JacobMedia SEO repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
                     </div>
-                    <h3>JacobMedia SEO</h3>
-                    <p>This portfolio site — built from scratch with semantic HTML, custom CSS, and vanilla JavaScript. Optimized for performance and SEO.</p>
-                    <div class="project-footer">
-                        <a href="https://github.com/illmedicine/JacobMedia-SEO" target="_blank" rel="noopener" class="project-link">
-                            View on GitHub
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                        <span class="project-tag">Portfolio</span>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-css">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.83-9.617H8.06l-.26-2.852h9.79z"/></svg>
+                            </div>
+                            <span class="project-lang">CSS / HTML</span>
+                        </div>
+                        <h3>JacobMedia SEO</h3>
+                        <p>This portfolio site — built from scratch with semantic HTML, custom CSS, and vanilla JavaScript. Optimized for performance and SEO.</p>
+                        <div class="project-footer">
+                            <a href="https://illmedicine.github.io/JacobMedia-SEO/" target="_blank" rel="noopener" class="project-link project-link-live">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                Live Site
+                            </a>
+                            <a href="https://github.com/illmedicine/JacobMedia-SEO" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">Portfolio</span>
+                        </div>
                     </div>
                 </div>
+                <!-- illysocialV2 -->
+                <div class="project-card content-showcase">
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/illysocialV2" alt="illysocialV2 repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-js">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.975.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.81-.18-1.26-.63-1.755-1.14l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+                            </div>
+                            <span class="project-lang">JavaScript</span>
+                        </div>
+                        <h3>illysocial V2</h3>
+                        <p>Social networking frontend for the illyRobotic ecosystem. Built with JavaScript, CSS, and a React-based frontend with Discord Partners Network integration.</p>
+                        <div class="project-footer">
+                            <a href="https://illmedicine.github.io/illysocialV2/" target="_blank" rel="noopener" class="project-link project-link-live">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                Live Site
+                            </a>
+                            <a href="https://github.com/illmedicine/illysocialV2" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">Social Platform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LivePay -->
+                <div class="project-card content-showcase">
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/LivePay" alt="LivePay repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-ts">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 011.306.34v2.458a3.95 3.95 0 00-.643-.361 5.093 5.093 0 00-.717-.26 5.453 5.453 0 00-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 00-.623.242c-.17.104-.3.229-.393.374a.888.888 0 00-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 01-1.012 1.085 4.38 4.38 0 01-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 01-1.84-.164 5.544 5.544 0 01-1.512-.493v-2.63a5.033 5.033 0 003.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 00-.074-1.089 2.12 2.12 0 00-.537-.5 5.597 5.597 0 00-.807-.444 27.72 27.72 0 00-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 011.47-.629 7.536 7.536 0 011.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg>
+                            </div>
+                            <span class="project-lang">TypeScript</span>
+                        </div>
+                        <h3>LivePay</h3>
+                        <p>Monetization frontend for HCMN. Built with TypeScript, featuring a Chrome extension integration, pricing schemes, and deployable to GitHub Pages, Netlify, and Vercel.</p>
+                        <div class="project-footer">
+                            <a href="https://illmedicine.github.io/LivePay/" target="_blank" rel="noopener" class="project-link project-link-live">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                Live Site
+                            </a>
+                            <a href="https://github.com/illmedicine/LivePay" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">FinTech</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DisCryptoBankWebSite -->
+                <div class="project-card content-showcase">
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/DisCryptoBankWebSite" alt="DisCryptoBank repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-css">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.83-9.617H8.06l-.26-2.852h9.79z"/></svg>
+                            </div>
+                            <span class="project-lang">HTML</span>
+                        </div>
+                        <h3>DisCryptoBank</h3>
+                        <p>Crypto banking platform website with advanced security features, pot-split gambling mode, wallet guides, and illyRobotic-branded event management system.</p>
+                        <div class="project-footer">
+                            <a href="https://illmedicine.github.io/DisCryptoBankWebSite/" target="_blank" rel="noopener" class="project-link project-link-live">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                Live Site
+                            </a>
+                            <a href="https://github.com/illmedicine/DisCryptoBankWebSite" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">Crypto / Web3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LivePay Petition Support -->
+                <div class="project-card content-showcase">
+                    <div class="project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/LivePay-Petition-Suppot" alt="LivePay Petition Support repo preview" loading="lazy">
+                        <div class="project-preview-overlay"></div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-header">
+                            <div class="project-icon pi-css">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.83-9.617H8.06l-.26-2.852h9.79z"/></svg>
+                            </div>
+                            <span class="project-lang">HTML / JS</span>
+                        </div>
+                        <h3>LivePay Petition Support</h3>
+                        <p>A petition and donation platform for the Data Ownership &amp; Fair Revenue Act. Features PayPal integration, real-time tracking, PWA mobile app, and offline support.</p>
+                        <div class="project-footer">
+                            <a href="https://illmedicine.github.io/LivePay-Petition-Suppot/#top" target="_blank" rel="noopener" class="project-link project-link-live">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                                Live Site
+                            </a>
+                            <a href="https://github.com/illmedicine/LivePay-Petition-Suppot" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <span class="project-tag">Civic Tech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View all on GitHub -->
+            <div class="projects-footer-link">
+                <a href="https://github.com/jacob-media" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    View All on GitHub
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
             </div>
 
             <!-- Tech Stack -->
@@ -640,7 +915,7 @@
                         <span class="logo-icon">&#9670;</span>
                         <span class="logo-text">JACOB<span class="logo-accent">MEDIA</span></span>
                     </a>
-                    <p>Software developer. Founder of illyRobotic AI. Building things that matter.</p>
+                    <p>Software developer. Co-Founder of illyRobotic AI. Building things that matter.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Connect</h4>
@@ -658,9 +933,12 @@
                 </div>
                 <div class="footer-links">
                     <h4>Projects</h4>
-                    <a href="https://github.com/illmedicine/Couch-Buddies" target="_blank" rel="noopener">Couch-Buddies</a>
-                    <a href="https://github.com/jacob-media/Meme-Responder" target="_blank" rel="noopener">Meme-Responder</a>
-                    <a href="https://github.com/illmedicine/6IXX-Lending-Partners-Inc" target="_blank" rel="noopener">6IXX Lending</a>
+                    <a href="https://www.illyrobotic-ai.com/" target="_blank" rel="noopener">illyRobotic AI</a>
+                    <a href="https://illmedicine.github.io/Couch-Buddies/" target="_blank" rel="noopener">Couch-Buddies</a>
+                    <a href="https://illmedicine.github.io/LivePay/" target="_blank" rel="noopener">LivePay</a>
+                    <a href="https://illmedicine.github.io/DisCryptoBankWebSite/" target="_blank" rel="noopener">DisCryptoBank</a>
+                    <a href="https://illmedicine.github.io/illysocialV2/" target="_blank" rel="noopener">illysocial V2</a>
+                    <a href="https://illmedicine.github.io/LivePay-Petition-Suppot/#top" target="_blank" rel="noopener">LivePay Petition</a>
                 </div>
             </div>
             <div class="footer-bottom">
