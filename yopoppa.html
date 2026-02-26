@@ -9,7 +9,8 @@
     <meta property="og:title" content="Yopoppa's Cave | The Stream Den">
     <meta property="og:description" content="Welcome to the cave. Streams, vibes, and degen energy.">
     <meta property="og:type" content="website">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦇</text></svg>" type="image/svg+xml">
+    <link rel="icon" href="Yopoppa%20Icon.png" type="image/png">
+    <meta property="og:image" content="YopoppaBanner.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -17,9 +18,12 @@
     <style>
         :root {
             --cave-accent: #53fc18;
-            --cave-purple: #b44dff;
-            --cave-orange: #ff6b35;
+            --cave-fire: #ff6b35;
+            --cave-gold: #d4a017;
+            --cave-red: #e91916;
+            --cave-flame: #ff4500;
             --cave-glow: rgba(83, 252, 24, 0.25);
+            --fire-glow: rgba(255, 107, 53, 0.3);
             --kick-bg: #0e0e10;
             --kick-surface: #18181b;
             --kick-surface-hover: #1f1f23;
@@ -31,10 +35,8 @@
         /* Kick-style banner */
         .kick-banner {
             width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, #53fc18, #7fff00, #53fc18, #39e600);
-            background-size: 400% 400%;
-            animation: bannerShimmer 8s ease-in-out infinite;
+            height: 320px;
+            background: url('YopoppaBanner.png') center center / cover no-repeat;
             position: relative;
             z-index: 1;
             margin-top: var(--nav-height);
@@ -45,12 +47,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 80px;
+            height: 120px;
             background: linear-gradient(to top, var(--kick-bg), transparent);
-        }
-        @keyframes bannerShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
 
         /* Profile card (Kick-style) */
@@ -73,14 +71,14 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 4px solid var(--kick-bg);
+            border: 4px solid var(--cave-gold);
             background: var(--kick-surface);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
             flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 24px rgba(255, 107, 53, 0.4), 0 0 0 2px var(--kick-bg);
             overflow: hidden;
         }
         .kick-avatar img {
@@ -139,7 +137,7 @@
             align-items: center;
             gap: 8px;
             padding: 10px 24px;
-            background: var(--cave-accent);
+            background: linear-gradient(135deg, var(--cave-accent), #39e600);
             color: #000;
             border-radius: 8px;
             font-weight: 700;
@@ -196,7 +194,7 @@
         .kick-view-all {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--cave-accent);
+            color: var(--cave-fire);
             transition: opacity 0.2s;
         }
         .kick-view-all:hover { opacity: 0.8; }
@@ -232,7 +230,8 @@
         }
 
         .cave-stream-card:hover {
-            border-color: rgba(83, 252, 24, 0.3);
+            border-color: rgba(255, 107, 53, 0.4);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.08);
         }
 
         .cave-stream-embed {
@@ -293,9 +292,9 @@
 
         .cave-link-card:hover {
             background: var(--kick-surface-hover);
-            border-color: var(--cave-accent);
+            border-color: var(--cave-fire);
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(83, 252, 24, 0.06);
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.1);
         }
 
         .cave-link-icon {
@@ -399,7 +398,7 @@
         }
 
         @media (max-width: 768px) {
-            .kick-banner { height: 180px; }
+            .kick-banner { height: 200px; }
             .kick-avatar { width: 80px; height: 80px; font-size: 2rem; }
             .kick-profile-name { font-size: 1.5rem; }
             .kick-profile-inner { gap: 16px; }
@@ -473,7 +472,7 @@
     <section class="kick-profile">
         <div class="kick-profile-inner">
             <div class="kick-avatar">
-                <svg viewBox="0 0 24 24" fill="var(--cave-accent)" width="60" height="60"><path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/></svg>
+                <img src="Yopoppa%20Icon.png" alt="Yopoppa">
             </div>
             <div class="kick-profile-info">
                 <div class="kick-profile-name">
