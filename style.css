@@ -1152,6 +1152,17 @@ img {
     margin-bottom: 40px;
 }
 
+.content-showcase .elfsight-app-04689537-c0e0-4899-827b-56ef6ae75e71 {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Force Elfsight widget to span full container width */
+.content-showcase [class*="elfsight"] {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
 .showcase-title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem;
