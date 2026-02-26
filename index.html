@@ -3,17 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JACOBMEDIA | Live Streaming & Content Creator</title>
-    <meta name="description" content="JACOBMEDIA - Live streaming on Kick. Watch popppayo live, catch up on VODs, and join the community.">
-    <meta name="keywords" content="JACOBMEDIA, popppayo, Kick, live stream, content creator, Discord, community">
-    <meta property="og:title" content="JACOBMEDIA | Live Streaming & Content Creator">
-    <meta property="og:description" content="Watch popppayo live on Kick. Join the Discord community and catch the latest content.">
+    <title>JACOBMEDIA | Jacob Schneider — Developer & Creator</title>
+    <meta name="description" content="Jacob Schneider — Software developer, founder of illyRobotic AI, and content creator. Building web apps, AI tools, and community projects.">
+    <meta name="keywords" content="Jacob Schneider, JACOBMEDIA, software developer, illyRobotic AI, web development, portfolio, GitHub">
+    <meta property="og:title" content="JACOBMEDIA | Jacob Schneider — Developer & Creator">
+    <meta property="og:description" content="Software developer, founder of illyRobotic AI, and content creator. View my projects and get in touch.">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Portfolio-specific styles */
+        .section-about { border-top: 1px solid rgba(255,255,255,0.04); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        .about-text .highlight { color: var(--text-primary); font-weight: 600; }
+        .about-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .about-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+        .about-link-linkedin {
+            background: rgba(10, 102, 194, 0.1);
+            border: 1px solid rgba(10, 102, 194, 0.2);
+            color: #0A66C2;
+        }
+        .about-link-linkedin:hover { background: rgba(10, 102, 194, 0.2); transform: translateY(-2px); }
+        .about-link-company {
+            background: rgba(88, 101, 242, 0.08);
+            border: 1px solid rgba(88, 101, 242, 0.15);
+            color: var(--discord);
+        }
+        .about-link-company:hover { background: rgba(88, 101, 242, 0.16); transform: translateY(-2px); }
+        .about-link-github {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        .about-link-github:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+        .about-detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .about-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        .about-detail-item:hover {
+            border-color: rgba(255,255,255,0.1);
+            transform: translateX(4px);
+        }
+        .about-detail-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        .about-detail-icon.adi-location { background: rgba(83, 252, 24, 0.08); color: var(--kick); }
+        .about-detail-icon.adi-role { background: rgba(153, 69, 255, 0.1); color: var(--sol-purple); }
+        .about-detail-icon.adi-focus { background: rgba(0, 209, 255, 0.08); color: #00D1FF; }
+        .about-detail-icon.adi-stack { background: rgba(20, 241, 149, 0.08); color: var(--sol-green); }
+        .about-detail-info h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .about-detail-info p { color: var(--text-muted); font-size: 0.85rem; }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            transition: all var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            border-color: rgba(153, 69, 255, 0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(153, 69, 255, 0.08);
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        .project-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .project-icon.pi-js { background: rgba(240, 219, 79, 0.1); color: #F0DB4F; }
+        .project-icon.pi-css { background: rgba(86, 61, 124, 0.15); color: #9B6DFF; }
+        .project-icon.pi-ts { background: rgba(49, 120, 198, 0.12); color: #3178C6; }
+        .project-lang {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.04);
+            color: var(--text-muted);
+        }
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+        .project-link:hover { color: var(--sol-purple); gap: 10px; }
+        .project-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50px;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+        }
+        .tech-badge:hover {
+            border-color: rgba(153, 69, 255, 0.2);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        .tech-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .td-js { background: #F0DB4F; }
+        .td-ts { background: #3178C6; }
+        .td-py { background: #3776AB; }
+        .td-css { background: #9B6DFF; }
+        .td-html { background: #E34C26; }
+        .td-react { background: #61DAFB; }
+        .td-node { background: #68A063; }
+        .td-sol { background: var(--sol-green); }
+        .td-git { background: #F34F29; }
+        .td-ai { background: #FF6B6B; }
+
+        /* Hobby / Yopoppa's Cave card */
+        .hobby-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid rgba(83, 252, 24, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            transition: all var(--transition-fast);
+        }
+        .hobby-card:hover {
+            border-color: rgba(83, 252, 24, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(83, 252, 24, 0.06);
+        }
+        .hobby-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(83, 252, 24, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 2rem;
+        }
+        .hobby-info { flex: 1; }
+        .hobby-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .hobby-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .hobby-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: rgba(83, 252, 24, 0.08);
+            border: 1px solid rgba(83, 252, 24, 0.15);
+            border-radius: var(--radius-md);
+            color: var(--kick);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+        }
+        .hobby-link:hover { background: rgba(83, 252, 24, 0.15); transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .hobby-card { flex-direction: column; text-align: center; }
+            .hobby-card .hobby-link { width: 100%; justify-content: center; }
+        }
+    </style>
 </head>
 <body>
     <!-- Animated Background -->
@@ -28,20 +312,10 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-container">
-            <a href="https://kick.com/poppayo" target="_blank" rel="noopener">Kick</a>
-            <a href="https://www.instagram.com/yopoppa.media/" target="_blank" rel="noopener">Instagram</a>
-            <a href="https://www.tiktok.com/@yopoppa1?lang=en" target="_blank" rel="noopener">TikTok</a>
-            <a href="https://www.youtube.com/@BomboGames" target="_blank" rel="noopener">YouTube</a>
-            <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener">Discord</a>
             <a href="https://www.linkedin.com/in/jacob-schneider-79123b295/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener">SolPump</a>
-            <a href="https://exchange.gemini.com/register?referral=mkxnxk7h7&type=referral" target="_blank" rel="noopener">Gemini</a>
-            <a href="https://stake.us/?c=XfnkQ92w" target="_blank" rel="noopener">Stake.us</a>
-            <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener">Rainbet</a>
-            <a href="https://gamba.com?c=yopoppagames" target="_blank" rel="noopener">Gamba</a>
-            <a href="https://tucanbit.io?affcode=PBt5iNz0tdy6b" target="_blank" rel="noopener">Tucanbit</a>
-            <a href="https://yeet.com/register?aff=yopoppa" target="_blank" rel="noopener">Yeet</a>
-            <a href="https://rugs.fun/?start=REF_RPE6BLF3O9BU" target="_blank" rel="noopener">Rugs.fun</a>
+            <a href="https://github.com/illmedicine" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.illyrobotic-ai.com/" target="_blank" rel="noopener">illyRobotic AI</a>
+            <a href="contact.html">Contact</a>
         </div>
     </div>
 
@@ -54,17 +328,14 @@
             </a>
             <div class="nav-links">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#videos" class="nav-link">Content</a>
-                <a href="#affiliates" class="nav-link">Affiliates</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="yopoppa.html" class="nav-link nav-link-cave">Yopoppa's Cave</a>
             </div>
             <div class="nav-actions">
-                <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick btn-sm">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                        <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
-                    </svg>
-                    Watch Live
+                <a href="contact.html" class="btn btn-sol btn-sm" style="background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); color: #000; font-weight: 700;">
+                    Get in Touch
                 </a>
             </div>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -76,17 +347,12 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#home" class="mobile-link">Home</a>
-        <a href="#videos" class="mobile-link">Content</a>
-        <a href="#affiliates" class="mobile-link">Affiliates</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#projects" class="mobile-link">Projects</a>
         <a href="contact.html" class="mobile-link">Contact</a>
         <a href="yopoppa.html" class="mobile-link" style="color: var(--kick);">Yopoppa's Cave</a>
         <div class="mobile-actions">
-            <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick">
-                Watch on Kick
-            </a>
-            <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" class="btn btn-discord">
-                Discord
-            </a>
+            <a href="contact.html" class="btn btn-sol" style="background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); color: #000; font-weight: 700;">Get in Touch</a>
         </div>
     </div>
 
@@ -95,45 +361,41 @@
         <div class="hero-container">
             <div class="hero-badge">
                 <span class="pulse-dot"></span>
-                STREAMING ON KICK
+                OPEN TO OPPORTUNITIES
             </div>
             <h1 class="hero-title">
                 <span class="title-line">JACOB</span>
-                <span class="title-line title-accent">MEDIA</span>
+                <span class="title-line title-accent">SCHNEIDER</span>
             </h1>
             <p class="hero-subtitle">
-                Live content creator streaming on Kick. Join the community, catch the action, and be part of something bigger.
+                Software developer and founder of <strong>illyRobotic AI</strong>. Building web applications, AI-driven tools, and creative digital products.
             </p>
             <div class="hero-buttons">
-                <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick btn-lg">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                        <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
-                    </svg>
-                    Watch on Kick
+                <a href="#projects" class="btn btn-sol btn-lg" style="background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); color: #000; font-weight: 700;">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+                    View Projects
                 </a>
-                <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" class="btn btn-discord btn-lg">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                    </svg>
-                    Join Discord
+                <a href="contact.html" class="btn btn-outline btn-lg" style="border-color: rgba(153,69,255,0.3); color: var(--sol-purple);">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Contact Me
                 </a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-value" data-count="24">0</span><span class="stat-suffix">/7</span>
-                    <span class="stat-label">Live Content</span>
+                    <span class="stat-value" data-count="4">0</span>
+                    <span class="stat-label">Public Projects</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-value">KICK</span>
-                    <span class="stat-label">Platform</span>
+                    <span class="stat-value">AI</span>
+                    <span class="stat-label">illyRobotic</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
                     <span class="stat-value">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" style="vertical-align: middle;"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 13.65 13.65 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.125-.094.252-.192.372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.1.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" style="vertical-align: middle;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </span>
-                    <span class="stat-label">Discord Community</span>
+                    <span class="stat-label">LinkedIn</span>
                 </div>
             </div>
         </div>
@@ -144,258 +406,224 @@
         </div>
     </section>
 
-    <!-- Content Section -->
-    <section class="section section-videos" id="videos">
+    <!-- About Section -->
+    <section class="section section-about" id="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">CONTENT</span>
-                <h2 class="section-title">Latest <span class="text-kick">Content</span></h2>
-                <p class="section-desc">Catch the latest stream on Kick and see what's trending on Instagram.</p>
+                <span class="section-tag">ABOUT ME</span>
+                <h2 class="section-title">Developer. <span class="text-gradient">Builder.</span> Creator.</h2>
+                <p class="section-desc">Turning ideas into products — from full-stack web apps to AI-powered platforms.</p>
             </div>
-            
-            <!-- Kick VOD -->
-            <div class="content-showcase">
-                <h3 class="showcase-title">Recent Stream</h3>
-                <div class="video-card kick-vod-card" style="display: block; padding: 20px; background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
-                    <div class="embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
-                        <iframe src="https://player.kick.com/poppayo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen="true"></iframe>
-                    </div>
-                    <div class="video-info" style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <h3 style="margin-bottom: 4px;">Latest Kick Stream</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Watch the most recent broadcast</p>
-                        </div>
-                        <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                                <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
-                            </svg>
-                            Source Link
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I'm <span class="highlight">Jacob Schneider</span>, a software developer focused on building practical, impactful applications. I founded <span class="highlight">illyRobotic AI</span>, where I'm developing intelligent automation and AI-driven tools.
+                    </p>
+                    <p>
+                        My work spans full-stack web development, crypto/blockchain projects, and creative media. I'm driven by solving real problems with clean code and thoughtful design.
+                    </p>
+                    <p>
+                        When I'm not building software, I stream and create content as <span class="highlight">Yopoppa</span> — my side project and creative outlet.
+                    </p>
+                    <div class="about-links">
+                        <a href="https://www.linkedin.com/in/jacob-schneider-79123b295/" target="_blank" rel="noopener" class="about-link-linkedin">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://www.illyrobotic-ai.com/" target="_blank" rel="noopener" class="about-link-company">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                            illyRobotic AI
+                        </a>
+                        <a href="https://github.com/illmedicine" target="_blank" rel="noopener" class="about-link-github">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
                         </a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Instagram Top 5 (Elfsight Widget) -->
-            <div class="content-showcase mt-40">
-                <h3 class="showcase-title">Top Instagram Posts</h3>
-                <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
-                <script src="https://elfsightcdn.com/platform.js" async></script>
-                <div class="elfsight-app-04689537-c0e0-4899-827b-56ef6ae75e71" data-elfsight-app-lazy></div>
+                <div class="about-detail-list">
+                    <div class="about-detail-item">
+                        <div class="about-detail-icon adi-role">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        </div>
+                        <div class="about-detail-info">
+                            <h4>Role</h4>
+                            <p>Founder & Developer @ illyRobotic AI</p>
+                        </div>
+                    </div>
+                    <div class="about-detail-item">
+                        <div class="about-detail-icon adi-focus">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <div class="about-detail-info">
+                            <h4>Focus</h4>
+                            <p>Web Apps, AI/Automation, Crypto</p>
+                        </div>
+                    </div>
+                    <div class="about-detail-item">
+                        <div class="about-detail-icon adi-stack">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <div class="about-detail-info">
+                            <h4>Stack</h4>
+                            <p>JavaScript, TypeScript, Python, React, Node.js</p>
+                        </div>
+                    </div>
+                    <div class="about-detail-item">
+                        <div class="about-detail-icon adi-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="about-detail-info">
+                            <h4>Available</h4>
+                            <p>Open to freelance & collaboration</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Affiliates Section -->
-    <section class="section section-solpump" id="affiliates">
+    <!-- Projects Section -->
+    <section class="section section-videos" id="projects">
         <div class="container">
-            <div id="platform-info-solpump">
-                <div class="section-header">
-                    <span class="section-tag tag-sol">SOLPUMP</span>
-                    <h2 class="section-title">Ride the <span class="text-sol">SolPump</span> Wave</h2>
-                    <p class="section-desc">Compete on leaderboards, wager with SOL, and earn rewards. Join the SolPump community through JACOBMEDIA.</p>
-                </div>
-                <div class="solpump-grid">
-                    <div class="sol-card sol-card-main">
-                        <div class="sol-card-glow"></div>
-                        <div class="sol-card-content">
-                            <div class="sol-icon-large">
-                                <svg viewBox="0 0 48 48" width="80" height="80">
-                                    <defs>
-                                        <linearGradient id="solGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#9945FF"/>
-                                            <stop offset="50%" style="stop-color:#14F195"/>
-                                            <stop offset="100%" style="stop-color:#00D1FF"/>
-                                        </linearGradient>
-                                    </defs>
-                                    <circle cx="24" cy="24" r="22" fill="none" stroke="url(#solGrad)" stroke-width="2"/>
-                                    <path d="M14 30h20l-3-4H17l-3 4zm0-6h20l-3-4H17l-3 4zm0-6h20l-3-4H17l-3 4z" fill="url(#solGrad)"/>
-                                </svg>
-                            </div>
-                            <h3>SolPump Leaderboard</h3>
-                            <p>Track your rank, compete with others, and climb the leaderboard. Wager SOL and win big rewards every week.</p>
-                            <div class="sol-stats-row">
-                                <div class="sol-stat">
-                                    <span class="sol-stat-label">Weekly Prize Pool</span>
-                                    <span class="sol-stat-value">SOL Rewards</span>
-                                </div>
-                                <div class="sol-stat">
-                                    <span class="sol-stat-label">Platform</span>
-                                    <span class="sol-stat-value">Solana</span>
-                                </div>
-                            </div>
-                            <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener" class="btn btn-sol btn-lg btn-full">
-                                <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20">
-                                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/>
-                                </svg>
-                                Enter SolPump
-                            </a>
+            <div class="section-header">
+                <span class="section-tag">PORTFOLIO</span>
+                <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+                <p class="section-desc">A selection of applications and tools I've built. All open-source on GitHub.</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Couch-Buddies -->
+                <div class="project-card content-showcase">
+                    <div class="project-header">
+                        <div class="project-icon pi-js">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.975.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.81-.18-1.26-.63-1.755-1.14l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
                         </div>
+                        <span class="project-lang">JavaScript</span>
                     </div>
-                    <div class="sol-card sol-card-info">
-                        <h4>How It Works</h4>
-                        <div class="sol-steps">
-                            <div class="sol-step">
-                                <span class="step-num">01</span>
-                                <div>
-                                    <h5>Connect</h5>
-                                    <p>Visit SolPump through JACOBMEDIA's link</p>
-                                </div>
-                            </div>
-                            <div class="sol-step">
-                                <span class="step-num">02</span>
-                                <div>
-                                    <h5>Wager</h5>
-                                    <p>Place your SOL and compete on the leaderboard</p>
-                                </div>
-                            </div>
-                            <div class="sol-step">
-                                <span class="step-num">03</span>
-                                <div>
-                                    <h5>Win</h5>
-                                    <p>Climb the ranks and earn weekly SOL rewards</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener" class="btn btn-outline-sol btn-full">
-                            Learn More
+                    <h3>Couch-Buddies</h3>
+                    <p>A social platform application connecting users for shared entertainment experiences. Built with JavaScript and modern web APIs.</p>
+                    <div class="project-footer">
+                        <a href="https://github.com/illmedicine/Couch-Buddies" target="_blank" rel="noopener" class="project-link">
+                            View on GitHub
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
+                        <span class="project-tag">Web App</span>
+                    </div>
+                </div>
+
+                <!-- Meme-Responder -->
+                <div class="project-card content-showcase">
+                    <div class="project-header">
+                        <div class="project-icon pi-js">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.975.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.81-.18-1.26-.63-1.755-1.14l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+                        </div>
+                        <span class="project-lang">JavaScript</span>
+                    </div>
+                    <h3>Meme-Responder</h3>
+                    <p>A web service that allows users to submit screenshots of conversations and generates relevant meme responses using web search and AI.</p>
+                    <div class="project-footer">
+                        <a href="https://github.com/jacob-media/Meme-Responder" target="_blank" rel="noopener" class="project-link">
+                            View on GitHub
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <span class="project-tag">AI / Web Service</span>
+                    </div>
+                </div>
+
+                <!-- 6IXX-Lending-Partners-Inc -->
+                <div class="project-card content-showcase">
+                    <div class="project-header">
+                        <div class="project-icon pi-ts">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 011.306.34v2.458a3.95 3.95 0 00-.643-.361 5.093 5.093 0 00-.717-.26 5.453 5.453 0 00-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 00-.623.242c-.17.104-.3.229-.393.374a.888.888 0 00-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 01-1.012 1.085 4.38 4.38 0 01-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 01-1.84-.164 5.544 5.544 0 01-1.512-.493v-2.63a5.033 5.033 0 003.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 00-.074-1.089 2.12 2.12 0 00-.537-.5 5.597 5.597 0 00-.807-.444 27.72 27.72 0 00-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 011.47-.629 7.536 7.536 0 011.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg>
+                        </div>
+                        <span class="project-lang">TypeScript</span>
+                    </div>
+                    <h3>6IXX Lending Partners</h3>
+                    <p>A lending platform application for financial services. Built with TypeScript for type-safe, scalable architecture.</p>
+                    <div class="project-footer">
+                        <a href="https://github.com/illmedicine/6IXX-Lending-Partners-Inc" target="_blank" rel="noopener" class="project-link">
+                            View on GitHub
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <span class="project-tag">FinTech</span>
+                    </div>
+                </div>
+
+                <!-- JacobMedia-SEO -->
+                <div class="project-card content-showcase">
+                    <div class="project-header">
+                        <div class="project-icon pi-css">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.83-9.617H8.06l-.26-2.852h9.79z"/></svg>
+                        </div>
+                        <span class="project-lang">CSS / HTML</span>
+                    </div>
+                    <h3>JacobMedia SEO</h3>
+                    <p>This portfolio site — built from scratch with semantic HTML, custom CSS, and vanilla JavaScript. Optimized for performance and SEO.</p>
+                    <div class="project-footer">
+                        <a href="https://github.com/illmedicine/JacobMedia-SEO" target="_blank" rel="noopener" class="project-link">
+                            View on GitHub
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <span class="project-tag">Portfolio</span>
                     </div>
                 </div>
             </div>
 
-            <div id="platform-info-rainbet" style="display: none;">
-                <div class="section-header">
-                    <span class="section-tag tag-rainbet" style="background: rgba(0, 255, 136, 0.1); border-color: rgba(0, 255, 136, 0.2); color: #00FF88;">RAINBET</span>
-                    <h2 class="section-title">Join the <span class="text-rainbet" style="background: linear-gradient(135deg, #00FF88, #00B8FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Rainbet</span> Action</h2>
-                    <p class="section-desc">Play your favorite casino games, wager with crypto, and earn rewards. Join the Rainbet community through JACOBMEDIA.</p>
-                </div>
-                <div class="solpump-grid">
-                    <div class="sol-card sol-card-main">
-                        <div class="sol-card-glow" style="background: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.15), transparent 70%);"></div>
-                        <div class="sol-card-content">
-                            <div class="sol-icon-large">
-                                <svg viewBox="0 0 48 48" width="80" height="80">
-                                    <defs>
-                                        <linearGradient id="rainbetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#00FF88"/>
-                                            <stop offset="100%" style="stop-color:#00B8FF"/>
-                                        </linearGradient>
-                                    </defs>
-                                    <circle cx="24" cy="24" r="22" fill="none" stroke="url(#rainbetGrad)" stroke-width="2"/>
-                                    <path d="M24 12v24M16 18h16M16 30h16" stroke="url(#rainbetGrad)" stroke-width="3" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                            <h3>Rainbet Leaderboard</h3>
-                            <p>Track your rank, compete with others, and climb the leaderboard. Wager crypto and win big rewards.</p>
-                            <div class="sol-stats-row">
-                                <div class="sol-stat">
-                                    <span class="sol-stat-label">Weekly Prize Pool</span>
-                                    <span class="sol-stat-value">Crypto Rewards</span>
-                                </div>
-                                <div class="sol-stat">
-                                    <span class="sol-stat-label">Platform</span>
-                                    <span class="sol-stat-value">Rainbet</span>
-                                </div>
-                            </div>
-                            <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener" class="btn btn-sol btn-lg btn-full" style="background: linear-gradient(135deg, #00FF88 0%, #00B8FF 100%); color: #000;">
-                                <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20">
-                                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/>
-                                </svg>
-                                Enter Rainbet
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sol-card sol-card-info">
-                        <h4>How It Works</h4>
-                        <div class="sol-steps">
-                            <div class="sol-step">
-                                <span class="step-num" style="color: #00FF88;">01</span>
-                                <div>
-                                    <h5>Connect</h5>
-                                    <p>Visit Rainbet through JACOBMEDIA's link</p>
-                                </div>
-                            </div>
-                            <div class="sol-step">
-                                <span class="step-num" style="color: #00FF88;">02</span>
-                                <div>
-                                    <h5>Wager</h5>
-                                    <p>Play games and compete on the leaderboard</p>
-                                </div>
-                            </div>
-                            <div class="sol-step">
-                                <span class="step-num" style="color: #00FF88;">03</span>
-                                <div>
-                                    <h5>Win</h5>
-                                    <p>Climb the ranks and earn crypto rewards</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener" class="btn btn-outline-sol btn-full" style="border-color: #00FF88; color: #00FF88;">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Affiliate Leaderboards -->
-            <div class="solpump-leaderboard" id="leaderboards">
-                <div class="leaderboard-header">
-                    <div class="leaderboard-title">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 20h.01"></path>
-                            <path d="M7 20v-4"></path>
-                            <path d="M12 20v-8"></path>
-                            <path d="M17 20V8"></path>
-                            <path d="M22 4v16"></path>
-                        </svg>
-                        <h3 id="leaderboard-title-text">SolPump Top Affiliates</h3>
-                    </div>
-                    <div class="leaderboard-filters">
-                        <button class="filter-btn active" data-platform="solpump">SolPump</button>
-                        <button class="filter-btn" data-platform="rainbet">Rainbet</button>
-                    </div>
-                </div>
-                <div class="leaderboard-table-container">
-                    <table class="leaderboard-table">
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>User</th>
-                                <th id="wagered-header">Wagered (SOL)</th>
-                                <th>Last Seen</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leaderboard-body">
-                            <!-- Populated by JS -->
-                        </tbody>
-                    </table>
+            <!-- Tech Stack -->
+            <div style="margin-top: 64px;">
+                <h3 style="text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; color: var(--text-muted); letter-spacing: 0.1em;">TECH STACK</h3>
+                <div class="tech-grid">
+                    <div class="tech-badge"><span class="tech-dot td-js"></span>JavaScript</div>
+                    <div class="tech-badge"><span class="tech-dot td-ts"></span>TypeScript</div>
+                    <div class="tech-badge"><span class="tech-dot td-py"></span>Python</div>
+                    <div class="tech-badge"><span class="tech-dot td-react"></span>React</div>
+                    <div class="tech-badge"><span class="tech-dot td-node"></span>Node.js</div>
+                    <div class="tech-badge"><span class="tech-dot td-html"></span>HTML5</div>
+                    <div class="tech-badge"><span class="tech-dot td-css"></span>CSS3</div>
+                    <div class="tech-badge"><span class="tech-dot td-sol"></span>Solana / Web3</div>
+                    <div class="tech-badge"><span class="tech-dot td-git"></span>Git / GitHub</div>
+                    <div class="tech-badge"><span class="tech-dot td-ai"></span>AI / ML</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Community / CTA Section -->
-    <section class="section section-community" id="community">
+    <!-- Side Hobby / Yopoppa's Cave -->
+    <section class="section" id="hobby" style="border-top: 1px solid rgba(255,255,255,0.04);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(83,252,24,0.08); border-color: rgba(83,252,24,0.15); color: var(--kick);">SIDE PROJECT</span>
+                <h2 class="section-title" style="font-size: clamp(1.3rem, 3vw, 1.8rem);">The Creative Side</h2>
+            </div>
+            <div class="hobby-card content-showcase">
+                <div class="hobby-icon">🦇</div>
+                <div class="hobby-info">
+                    <h3>Yopoppa's Cave</h3>
+                    <p>My side hobby — live streaming on Kick, building a Discord community, and creating content. A different vibe from the professional work, but always building something.</p>
+                    <a href="yopoppa.html" class="hobby-link">
+                        Enter The Cave
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-community" id="cta">
         <div class="container">
             <div class="cta-card">
                 <div class="cta-bg"></div>
                 <div class="cta-content">
-                    <h2>Join the <span class="text-gradient">JACOBMEDIA</span> Community</h2>
-                    <p>Follow popppayo on Kick, join the Discord, and become part of the crew.</p>
+                    <h2>Let's <span class="text-gradient">Work Together</span></h2>
+                    <p>Interested in collaborating, hiring, or just want to connect? I'd love to hear from you.</p>
                     <div class="cta-buttons">
-                        <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick btn-lg">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                                <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
-                            </svg>
-                            Follow on Kick
+                        <a href="contact.html" class="btn btn-sol btn-lg" style="background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); color: #000; font-weight: 700;">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            Get in Touch
                         </a>
-                        <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" class="btn btn-discord btn-lg">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                            </svg>
-                            Join Discord
+                        <a href="https://www.linkedin.com/in/jacob-schneider-79123b295/" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="border-color: rgba(10,102,194,0.3); color: #0A66C2;">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
                         </a>
                     </div>
                 </div>
@@ -412,73 +640,37 @@
                         <span class="logo-icon">&#9670;</span>
                         <span class="logo-text">JACOB<span class="logo-accent">MEDIA</span></span>
                     </a>
-                    <p>Live content creator streaming on Kick. Join the community.</p>
+                    <p>Software developer. Founder of illyRobotic AI. Building things that matter.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Socials</h4>
-                    <a href="https://kick.com/poppayo" target="_blank" rel="noopener">Kick</a>
-                    <a href="https://www.instagram.com/yopoppa.media/" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://www.tiktok.com/@yopoppa1?lang=en" target="_blank" rel="noopener">TikTok</a>
-                    <a href="https://www.youtube.com/@BomboGames" target="_blank" rel="noopener">YouTube</a>
-                    <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener">Discord</a>
+                    <h4>Connect</h4>
                     <a href="https://www.linkedin.com/in/jacob-schneider-79123b295/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://github.com/illmedicine" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.illyrobotic-ai.com/" target="_blank" rel="noopener">illyRobotic AI</a>
+                    <a href="contact.html">Contact</a>
                 </div>
                 <div class="footer-links">
                     <h4>Pages</h4>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
                     <a href="contact.html">Contact</a>
                     <a href="yopoppa.html">Yopoppa's Cave</a>
-                    <a href="https://www.illyrobotic-ai.com/" target="_blank" rel="noopener">illyRobotic AI</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Partners & Affiliates</h4>
-                    <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener">SolPump</a>
-                    <a href="https://exchange.gemini.com/register?referral=mkxnxk7h7&type=referral" target="_blank" rel="noopener">Gemini</a>
-                    <a href="https://stake.us/?c=XfnkQ92w" target="_blank" rel="noopener">Stake.us</a>
-                    <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener">Rainbet</a>
-                    <a href="https://gamba.com?c=yopoppagames" target="_blank" rel="noopener">Gamba</a>
-                    <a href="https://tucanbit.io?affcode=PBt5iNz0tdy6b" target="_blank" rel="noopener">Tucanbit</a>
-                    <a href="https://yeet.com/register?aff=yopoppa" target="_blank" rel="noopener">Yeet</a>
-                    <a href="https://rugs.fun/?start=REF_RPE6BLF3O9BU" target="_blank" rel="noopener">Rugs.fun</a>
+                    <h4>Projects</h4>
+                    <a href="https://github.com/illmedicine/Couch-Buddies" target="_blank" rel="noopener">Couch-Buddies</a>
+                    <a href="https://github.com/jacob-media/Meme-Responder" target="_blank" rel="noopener">Meme-Responder</a>
+                    <a href="https://github.com/illmedicine/6IXX-Lending-Partners-Inc" target="_blank" rel="noopener">6IXX Lending</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 JACOBMEDIA. All rights reserved.</p>
                 <div class="footer-socials">
-                    <a href="https://kick.com/poppayo" target="_blank" rel="noopener" aria-label="Kick" class="social-link social-kick">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/yopoppa.media/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link social-ig">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@yopoppa1?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="social-link social-tiktok">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.1z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.youtube.com/@BomboGames" target="_blank" rel="noopener" aria-label="YouTube" class="social-link social-yt">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                    </a>
-                    <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" aria-label="Discord" class="social-link social-discord">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
-                        </svg>
-                    </a>
-                    <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener" aria-label="SolPump" class="social-link social-sol">
-                        <svg viewBox="0 0 24 24" width="20" height="20">
-                            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/>
-                        </svg>
-                    </a>
                     <a href="https://www.linkedin.com/in/jacob-schneider-79123b295/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link social-linkedin">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://github.com/illmedicine" target="_blank" rel="noopener" aria-label="GitHub" class="social-link" style="color: var(--text-secondary);">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                     </a>
                 </div>
             </div>

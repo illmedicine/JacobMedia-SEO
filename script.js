@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     document.querySelectorAll(
-        '.section-header, .feature-card, .sol-card, .video-card, .cta-card, .stream-embed, .content-showcase, .kick-vod-card'
+        '.section-header, .feature-card, .sol-card, .video-card, .cta-card, .stream-embed, .content-showcase, .kick-vod-card, .project-card, .hobby-card, .about-detail-item, .tech-badge'
     ).forEach(el => observer.observe(el));
 
     // Counter animation for hero stats
@@ -141,120 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // SolPump Leaderboard Data
-    const solpumpData = [
-        { user: 'YNSage', wagered: 8.6803, lastSeen: '12/27/2025' },
-        { user: 'JayWooki', wagered: 1.1610, lastSeen: '12/13/2025' },
-        { user: 'WTOMXX', wagered: 0.6115, lastSeen: '12/28/2025' },
-        { user: 'WTOMX', wagered: 0.2117, lastSeen: '12/18/2025' },
-        { user: 'jusagamblerkick', wagered: 0.1898, lastSeen: '12/17/2025' },
-        { user: 'Victamna', wagered: 0.1214, lastSeen: '01/18/2026' },
-        { user: 'BAKASTA987', wagered: 0.1078, lastSeen: '12/17/2025' },
-        { user: 'WAGURIANYA090', wagered: 0.0771, lastSeen: '12/17/2025' },
-        { user: 'IAMKURUSO', wagered: 0.0701, lastSeen: '12/17/2025' },
-        { user: 'KICK-YOPOPPA', wagered: 0.0689, lastSeen: '12/17/2025' }
-    ];
-
-    // Rainbet Leaderboard Data
-    const rainbetData = [
-        { user: 'coleJS992', wagered: 133.27, lastSeen: '01/21/2026' },
-        { user: 'brodygroom45544', wagered: 96.97, lastSeen: '01/21/2026' },
-        { user: 'skill10000x', wagered: 32.22, lastSeen: '01/20/2026' },
-        { user: 'EarlyKit260', wagered: 0.00, lastSeen: '01/21/2026' },
-        { user: 'darvini', wagered: 0.00, lastSeen: '01/21/2026' }
-    ];
-
-    const leaderboardBody = document.getElementById('leaderboard-body');
-    const leaderboardTitleText = document.getElementById('leaderboard-title-text');
-    const wageredHeader = document.getElementById('wagered-header');
-    
-    if (leaderboardBody) {
-        function renderLeaderboard(data, platform) {
-            leaderboardBody.innerHTML = '';
-            data.forEach((row, index) => {
-                const tr = document.createElement('tr');
-                
-                // Add rank classes for top 3
-                let rankClass = '';
-                if (index === 0) rankClass = 'rank-1';
-                else if (index === 1) rankClass = 'rank-2';
-                else if (index === 2) rankClass = 'rank-3';
-
-                let wageredIcon = '';
-                if (platform === 'solpump') {
-                    wageredIcon = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M8 15h8l-2-3H10l-2 3zm0-4h8l-2-3H10l-2 3z"/>
-                    </svg>`;
-                } else {
-                    wageredIcon = `<span style="font-weight: bold; margin-right: 4px;">$</span>`;
-                }
-
-                tr.innerHTML = `
-                    <td><span class="rank-badge ${rankClass}">${index + 1}</span></td>
-                    <td class="user-cell">
-                        <div class="user-avatar">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${row.user}&backgroundColor=1c1c28" alt="${row.user}">
-                        </div>
-                        <span class="user-name">${row.user}</span>
-                    </td>
-                    <td class="wagered-cell ${platform === 'rainbet' ? 'text-rainbet-wagered' : ''}">
-                        ${wageredIcon}
-                        ${platform === 'solpump' ? row.wagered.toFixed(4) : row.wagered.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
-                    </td>
-                    <td class="date-cell">${row.lastSeen}</td>
-                `;
-                leaderboardBody.appendChild(tr);
-            });
-        }
-
-        // Initial render
-        renderLeaderboard(solpumpData, 'solpump');
-
-        // Tab functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const platformInfoSolpump = document.getElementById('platform-info-solpump');
-        const platformInfoRainbet = document.getElementById('platform-info-rainbet');
-
-        function triggerFadeIn(element) {
-            if (!element) return;
-            element.classList.remove('fade-in');
-            void element.offsetWidth; // trigger reflow
-            element.classList.add('fade-in');
-        }
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                
-                const platform = e.target.dataset.platform;
-                
-                if (platform === 'solpump') {
-                    leaderboardTitleText.textContent = 'SolPump Top Affiliates';
-                    wageredHeader.textContent = 'Wagered (SOL)';
-                    if (platformInfoSolpump) {
-                        platformInfoSolpump.style.display = 'block';
-                        triggerFadeIn(platformInfoSolpump);
-                    }
-                    if (platformInfoRainbet) platformInfoRainbet.style.display = 'none';
-                    renderLeaderboard(solpumpData, 'solpump');
-                    triggerFadeIn(leaderboardBody);
-                } else if (platform === 'rainbet') {
-                    leaderboardTitleText.textContent = 'Rainbet Top Affiliates';
-                    wageredHeader.textContent = 'Wagered (USD)';
-                    if (platformInfoSolpump) platformInfoSolpump.style.display = 'none';
-                    if (platformInfoRainbet) {
-                        platformInfoRainbet.style.display = 'block';
-                        triggerFadeIn(platformInfoRainbet);
-                    }
-                    renderLeaderboard(rainbetData, 'rainbet');
-                    triggerFadeIn(leaderboardBody);
-                }
-            });
-        });
-    }
-
-    // Instagram Feed Fetcher
-    // Instagram feed is now handled by the Elfsight widget embedded directly in index.html
+    // Instagram Feed / Leaderboard data
+    // These features are now handled on yopoppa.html
 });
