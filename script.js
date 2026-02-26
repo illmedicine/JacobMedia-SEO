@@ -213,6 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Tab functionality
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const platformInfoSolpump = document.getElementById('platform-info-solpump');
+        const platformInfoRainbet = document.getElementById('platform-info-rainbet');
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 filterBtns.forEach(b => b.classList.remove('active'));
@@ -223,10 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (platform === 'solpump') {
                     leaderboardTitleText.textContent = 'SolPump Top Affiliates';
                     wageredHeader.textContent = 'Wagered (SOL)';
+                    if (platformInfoSolpump) platformInfoSolpump.style.display = 'block';
+                    if (platformInfoRainbet) platformInfoRainbet.style.display = 'none';
                     renderLeaderboard(solpumpData, 'solpump');
                 } else if (platform === 'rainbet') {
                     leaderboardTitleText.textContent = 'Rainbet Top Affiliates';
                     wageredHeader.textContent = 'Wagered (USD)';
+                    if (platformInfoSolpump) platformInfoSolpump.style.display = 'none';
+                    if (platformInfoRainbet) platformInfoRainbet.style.display = 'block';
                     renderLeaderboard(rainbetData, 'rainbet');
                 }
             });
