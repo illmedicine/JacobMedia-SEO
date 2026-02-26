@@ -256,58 +256,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Instagram Feed Fetcher
-    async function fetchInstagramPosts() {
-        const feedContainer = document.getElementById('instagram-feed');
-        if (!feedContainer) return;
-
-        try {
-            // Using a public RSS proxy to bypass Instagram's strict CORS/scraping blocks
-            // Note: This relies on a third-party service and may be rate-limited or delayed
-            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frsshub.app%2Finstagram%2Fuser%2Fyopoppa.media');
-            const data = await response.json();
-
-            if (data.status === 'ok' && data.items && data.items.length > 0) {
-                feedContainer.innerHTML = ''; // Clear loading spinner
-                
-                // Get top 5 posts
-                const posts = data.items.slice(0, 5);
-                
-                posts.forEach((post, index) => {
-                    // Extract shortcode from URL (e.g., https://www.instagram.com/p/SHORTCODE/)
-                    const urlParts = post.link.split('/');
-                    const shortcode = urlParts[urlParts.indexOf('p') + 1];
-                    
-                    // Clean up title (remove hashtags or truncate if too long)
-                    let title = post.title || `Instagram Post #${index + 1}`;
-                    if (title.length > 40) title = title.substring(0, 40) + '...';
-
-                    const postHtml = `
-                        <div class="video-card ig-card" style="display: block; padding: 20px; background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
-                            <div class="embed-container" style="margin-bottom: 20px; border-radius: 8px; overflow: hidden; background: #000;">
-                                <iframe src="https://www.instagram.com/p/${shortcode}/embed" width="100%" height="400" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-                            </div>
-                            <div class="video-info" style="display: flex; justify-content: space-between; align-items: center;">
-                                <h3 style="font-size: 1.1rem;" title="${post.title}">${title}</h3>
-                                <a href="${post.link}" target="_blank" rel="noopener" class="btn btn-outline-sol" style="padding: 8px 16px; font-size: 0.9rem;">Source Link</a>
-                            </div>
-                        </div>
-                    `;
-                    feedContainer.insertAdjacentHTML('beforeend', postHtml);
-                });
-            } else {
-                throw new Error('Failed to load posts or no posts found');
-            }
-        } catch (error) {
-            console.error('Error fetching Instagram posts:', error);
-            feedContainer.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
-                    <p style="color: var(--text-secondary); margin-bottom: 16px;">Unable to load live Instagram feed at this time.</p>
-                    <a href="https://www.instagram.com/yopoppa.media/" target="_blank" rel="noopener" class="btn btn-outline-sol">View Profile on Instagram</a>
-                </div>
-            `;
-        }
-    }
-
-    // Initialize Instagram fetch
-    fetchInstagramPosts();
+    // Instagram feed is now handled by the Elfsight widget embedded directly in index.html
 });
