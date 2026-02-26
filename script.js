@@ -157,16 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Rainbet Leaderboard Data
     const rainbetData = [
-        { user: 'CryptoKing', wagered: 15420.50, lastSeen: '02/25/2026' },
-        { user: 'RainMaker', wagered: 12350.25, lastSeen: '02/24/2026' },
-        { user: 'BetMaster', wagered: 8940.00, lastSeen: '02/25/2026' },
-        { user: 'LuckyStrike', wagered: 5620.75, lastSeen: '02/23/2026' },
-        { user: 'HighRoller', wagered: 4210.10, lastSeen: '02/25/2026' },
-        { user: 'CoinFlipper', wagered: 3150.00, lastSeen: '02/22/2026' },
-        { user: 'SatoshiFan', wagered: 2840.50, lastSeen: '02/24/2026' },
-        { user: 'DiamondHands', wagered: 1950.25, lastSeen: '02/21/2026' },
-        { user: 'MoonBoy', wagered: 1420.00, lastSeen: '02/25/2026' },
-        { user: 'WhaleAlert', wagered: 980.50, lastSeen: '02/20/2026' }
+        { user: 'coleJS992', wagered: 133.27, lastSeen: '01/21/2026' },
+        { user: 'brodygroom45544', wagered: 96.97, lastSeen: '01/21/2026' },
+        { user: 'skill10000x', wagered: 32.22, lastSeen: '01/20/2026' },
+        { user: 'EarlyKit260', wagered: 0.00, lastSeen: '01/21/2026' },
+        { user: 'darvini', wagered: 0.00, lastSeen: '01/21/2026' }
     ];
 
     const leaderboardBody = document.getElementById('leaderboard-body');
