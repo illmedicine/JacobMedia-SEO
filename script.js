@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // SolPump Leaderboard Data
-    const leaderboardData = [
+    const solpumpData = [
         { user: 'YNSage', wagered: 8.6803, lastSeen: '12/27/2025' },
         { user: 'JayWooki', wagered: 1.1610, lastSeen: '12/13/2025' },
         { user: 'WTOMXX', wagered: 0.6115, lastSeen: '12/28/2025' },
@@ -155,10 +155,26 @@ document.addEventListener('DOMContentLoaded', () => {
         { user: 'KICK-YOPOPPA', wagered: 0.0689, lastSeen: '12/17/2025' }
     ];
 
+    // Rainbet Leaderboard Data
+    const rainbetData = [
+        { user: 'CryptoKing', wagered: 15420.50, lastSeen: '02/25/2026' },
+        { user: 'RainMaker', wagered: 12350.25, lastSeen: '02/24/2026' },
+        { user: 'BetMaster', wagered: 8940.00, lastSeen: '02/25/2026' },
+        { user: 'LuckyStrike', wagered: 5620.75, lastSeen: '02/23/2026' },
+        { user: 'HighRoller', wagered: 4210.10, lastSeen: '02/25/2026' },
+        { user: 'CoinFlipper', wagered: 3150.00, lastSeen: '02/22/2026' },
+        { user: 'SatoshiFan', wagered: 2840.50, lastSeen: '02/24/2026' },
+        { user: 'DiamondHands', wagered: 1950.25, lastSeen: '02/21/2026' },
+        { user: 'MoonBoy', wagered: 1420.00, lastSeen: '02/25/2026' },
+        { user: 'WhaleAlert', wagered: 980.50, lastSeen: '02/20/2026' }
+    ];
+
     const leaderboardBody = document.getElementById('leaderboard-body');
+    const leaderboardTitleText = document.getElementById('leaderboard-title-text');
+    const wageredHeader = document.getElementById('wagered-header');
     
     if (leaderboardBody) {
-        function renderLeaderboard(data) {
+        function renderLeaderboard(data, platform) {
             leaderboardBody.innerHTML = '';
             data.forEach((row, index) => {
                 const tr = document.createElement('tr');
@@ -169,6 +185,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 else if (index === 1) rankClass = 'rank-2';
                 else if (index === 2) rankClass = 'rank-3';
 
+                let wageredIcon = '';
+                if (platform === 'solpump') {
+                    wageredIcon = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 15h8l-2-3H10l-2 3zm0-4h8l-2-3H10l-2 3z"/>
+                    </svg>`;
+                } else {
+                    wageredIcon = `<span style="font-weight: bold; margin-right: 4px;">$</span>`;
+                }
+
                 tr.innerHTML = `
                     <td><span class="rank-badge ${rankClass}">${index + 1}</span></td>
                     <td class="user-cell">
@@ -177,12 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <span class="user-name">${row.user}</span>
                     </td>
-                    <td class="wagered-cell">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M8 15h8l-2-3H10l-2 3zm0-4h8l-2-3H10l-2 3z"/>
-                        </svg>
-                        ${row.wagered.toFixed(4)}
+                    <td class="wagered-cell ${platform === 'rainbet' ? 'text-rainbet-wagered' : ''}">
+                        ${wageredIcon}
+                        ${platform === 'solpump' ? row.wagered.toFixed(4) : row.wagered.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
                     </td>
                     <td class="date-cell">${row.lastSeen}</td>
                 `;
@@ -191,23 +214,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Initial render
-        renderLeaderboard(leaderboardData);
+        renderLeaderboard(solpumpData, 'solpump');
 
-        // Sort functionality
+        // Tab functionality
         const filterBtns = document.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
                 
-                const sortType = e.target.dataset.sort;
-                let sortedData = [...leaderboardData];
+                const platform = e.target.dataset.platform;
                 
-                if (sortType === 'wagered') {
-                    sortedData.sort((a, b) => b.wagered - a.wagered);
+                if (platform === 'solpump') {
+                    leaderboardTitleText.textContent = 'SolPump Top Affiliates';
+                    wageredHeader.textContent = 'Wagered (SOL)';
+                    renderLeaderboard(solpumpData, 'solpump');
+                } else if (platform === 'rainbet') {
+                    leaderboardTitleText.textContent = 'Rainbet Top Affiliates';
+                    wageredHeader.textContent = 'Wagered (USD)';
+                    renderLeaderboard(rainbetData, 'rainbet');
                 }
-                
-                renderLeaderboard(sortedData);
             });
         });
     }

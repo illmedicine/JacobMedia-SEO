@@ -270,8 +270,8 @@
                 </div>
             </div>
 
-            <!-- SolPump Leaderboard -->
-            <div class="solpump-leaderboard">
+            <!-- Affiliate Leaderboards -->
+            <div class="solpump-leaderboard" id="leaderboards">
                 <div class="leaderboard-header">
                     <div class="leaderboard-title">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -281,10 +281,11 @@
                             <path d="M17 20V8"></path>
                             <path d="M22 4v16"></path>
                         </svg>
-                        <h3>SolPump Top Affiliates</h3>
+                        <h3 id="leaderboard-title-text">SolPump Top Affiliates</h3>
                     </div>
                     <div class="leaderboard-filters">
-                        <button class="filter-btn active" data-sort="wagered">Most Wagered</button>
+                        <button class="filter-btn active" data-platform="solpump">SolPump</button>
+                        <button class="filter-btn" data-platform="rainbet">Rainbet</button>
                     </div>
                 </div>
                 <div class="leaderboard-table-container">
@@ -293,7 +294,7 @@
                             <tr>
                                 <th>Rank</th>
                                 <th>User</th>
-                                <th>Wagered (SOL)</th>
+                                <th id="wagered-header">Wagered (SOL)</th>
                                 <th>Last Seen</th>
                             </tr>
                         </thead>
@@ -301,75 +302,6 @@
                             <!-- Populated by JS -->
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rainbet Section -->
-    <section class="section section-rainbet" id="rainbet">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag tag-rainbet">RAINBET</span>
-                <h2 class="section-title">Play on <span class="text-rainbet">Rainbet</span></h2>
-                <p class="section-desc">Join Rainbet, an online crypto casino with Bitcoin games and fast withdrawals. Enjoy a welcome bonus and secure gaming.</p>
-            </div>
-            <div class="solpump-grid">
-                <div class="sol-card sol-card-main">
-                    <div class="sol-card-glow"></div>
-                    <div class="sol-card-content">
-                        <div class="sol-icon-large">
-                            <img src="https://cdn.rainbet.com/brand/favicons/192x192.png" alt="Rainbet" width="80" height="80" style="border-radius: 50%;">
-                        </div>
-                        <h3>Rainbet Crypto Casino</h3>
-                        <p>Play at Rainbet, an online crypto casino with Bitcoin games and fast withdrawals. Enjoy a welcome bonus and secure gaming at one of the best casinos for crypto players.</p>
-                        <div class="sol-stats-row">
-                            <div class="sol-stat">
-                                <span class="sol-stat-label">Welcome Bonus</span>
-                                <span class="sol-stat-value">Available</span>
-                            </div>
-                            <div class="sol-stat">
-                                <span class="sol-stat-label">Platform</span>
-                                <span class="sol-stat-value">Crypto</span>
-                            </div>
-                        </div>
-                        <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener" class="btn btn-sol btn-lg btn-full" style="background: linear-gradient(135deg, #2E365C 0%, #1a1f3c 100%); border-color: #2E365C;">
-                            <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20">
-                                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                <path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/>
-                            </svg>
-                            Join Rainbet
-                        </a>
-                    </div>
-                </div>
-                <div class="sol-card sol-card-info">
-                    <h4>Why Rainbet?</h4>
-                    <div class="sol-steps">
-                        <div class="sol-step">
-                            <span class="step-num">01</span>
-                            <div>
-                                <h5>Fast Withdrawals</h5>
-                                <p>Instant crypto transactions</p>
-                            </div>
-                        </div>
-                        <div class="sol-step">
-                            <span class="step-num">02</span>
-                            <div>
-                                <h5>Great Games</h5>
-                                <p>Originals, Slots, Live Casino & Sportsbook</p>
-                            </div>
-                        </div>
-                        <div class="sol-step">
-                            <span class="step-num">03</span>
-                            <div>
-                                <h5>Rewards</h5>
-                                <p>Daily, Weekly & Monthly Bonuses</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener" class="btn btn-outline-sol btn-full" style="color: #fff; border-color: #2E365C;">
-                        Learn More
-                    </a>
                 </div>
             </div>
         </div>
