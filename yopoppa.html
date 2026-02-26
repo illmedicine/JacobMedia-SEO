@@ -517,11 +517,10 @@
             .kick-profile-actions { width: 100%; }
         }
         /* Affiliate Signup Promo Cards */
-        .aff-promo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+        .aff-promo-container {
+            position: relative;
             margin-bottom: 32px;
+            min-height: 100px;
         }
         .aff-promo-card {
             position: relative;
@@ -529,9 +528,16 @@
             padding: 28px 28px 24px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.25s ease;
+            transition: all 0.35s ease;
             text-decoration: none;
+            display: none;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        .aff-promo-card.promo-active {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
         .aff-promo-card:hover {
             transform: translateY(-4px);
@@ -672,8 +678,8 @@
                 flex-direction: column;
             }
             .kick-profile-actions a { width: 100%; justify-content: center; }
-            .aff-promo-grid {
-                grid-template-columns: 1fr;
+            .aff-promo-container {
+                margin-bottom: 24px;
             }
         }
     </style>
@@ -791,43 +797,7 @@
                 <span class="cave-aff-tag">COMPETE & EARN</span>
             </div>
 
-            <!-- Signup Promo Cards -->
-            <div class="aff-promo-grid">
-                <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener" class="aff-promo-card promo-solpump">
-                    <div class="aff-promo-content">
-                        <div class="aff-promo-badge">🟣 SOLPUMP AFFILIATE</div>
-                        <h3>Play on SolPump</h3>
-                        <p>Wager SOL, climb the leaderboard, and compete with the community. Use code YOPOPPA when you sign up.</p>
-                        <div class="aff-promo-bonus">
-                            <div class="aff-promo-bonus-icon">🎁</div>
-                            <div class="aff-promo-bonus-text">
-                                Free Daily SOL Cases
-                                <span>Open free cases every day just for signing up with code YOPOPPA</span>
-                            </div>
-                        </div>
-                        <div class="aff-promo-btn">Sign Up on SolPump →</div>
-                        <div class="aff-promo-code">Code: YOPOPPA</div>
-                    </div>
-                </a>
-                <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener" class="aff-promo-card promo-rainbet">
-                    <div class="aff-promo-content">
-                        <div class="aff-promo-badge">💎 RAINBET AFFILIATE</div>
-                        <h3>Play on Rainbet</h3>
-                        <p>Hit the slots, climb the ranks, and rep The Cave on the Rainbet leaderboard. Use code yopoppa4.</p>
-                        <div class="aff-promo-bonus">
-                            <div class="aff-promo-bonus-icon">🎰</div>
-                            <div class="aff-promo-bonus-text">
-                                Free $0.30 Daily Case + Rakeback Rewards
-                                <span>Daily free cases &amp; earn rakeback on every wager with code yopoppa4</span>
-                            </div>
-                        </div>
-                        <div class="aff-promo-btn">Sign Up on Rainbet →</div>
-                        <div class="aff-promo-code">Code: yopoppa4</div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Leaderboard Table -->
+            <!-- Tab Switcher -->
             <div class="solpump-leaderboard">
                 <div class="leaderboard-header">
                     <div class="leaderboard-title">
@@ -844,6 +814,42 @@
                         <button class="filter-btn active" data-platform="solpump">SolPump</button>
                         <button class="filter-btn" data-platform="rainbet">Rainbet</button>
                     </div>
+                </div>
+
+                <!-- Signup Promo (switches with tab) -->
+                <div class="aff-promo-container" style="padding: 20px 24px 0;">
+                    <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener" class="aff-promo-card promo-solpump promo-active" id="promo-solpump">
+                        <div class="aff-promo-content">
+                            <div class="aff-promo-badge">🟣 SOLPUMP AFFILIATE</div>
+                            <h3>Play on SolPump</h3>
+                            <p>Wager SOL, climb the leaderboard, and compete with the community. Use code YOPOPPA when you sign up.</p>
+                            <div class="aff-promo-bonus">
+                                <div class="aff-promo-bonus-icon">🎁</div>
+                                <div class="aff-promo-bonus-text">
+                                    Free Daily SOL Cases
+                                    <span>Open free cases every day just for signing up with code YOPOPPA</span>
+                                </div>
+                            </div>
+                            <div class="aff-promo-btn">Sign Up on SolPump →</div>
+                            <div class="aff-promo-code">Code: YOPOPPA</div>
+                        </div>
+                    </a>
+                    <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener" class="aff-promo-card promo-rainbet" id="promo-rainbet">
+                        <div class="aff-promo-content">
+                            <div class="aff-promo-badge">💎 RAINBET AFFILIATE</div>
+                            <h3>Play on Rainbet</h3>
+                            <p>Hit the slots, climb the ranks, and rep The Cave on the Rainbet leaderboard. Use code yopoppa4.</p>
+                            <div class="aff-promo-bonus">
+                                <div class="aff-promo-bonus-icon">🎰</div>
+                                <div class="aff-promo-bonus-text">
+                                    Free $0.30 Daily Case + Rakeback Rewards
+                                    <span>Daily free cases &amp; earn rakeback on every wager with code yopoppa4</span>
+                                </div>
+                            </div>
+                            <div class="aff-promo-btn">Sign Up on Rainbet →</div>
+                            <div class="aff-promo-code">Code: yopoppa4</div>
+                        </div>
+                    </a>
                 </div>
                 <div class="leaderboard-table-container">
                     <table class="leaderboard-table">
@@ -1136,7 +1142,29 @@
         const leaderboardTitleText = document.getElementById('leaderboard-title-text');
         const wageredHeader = document.getElementById('wagered-header');
 
+        const promoSolpump = document.getElementById('promo-solpump');
+        const promoRainbet = document.getElementById('promo-rainbet');
+
         if (leaderboardBody) {
+            function switchPlatform(platform) {
+                // Switch promo cards
+                if (promoSolpump && promoRainbet) {
+                    promoSolpump.classList.toggle('promo-active', platform === 'solpump');
+                    promoRainbet.classList.toggle('promo-active', platform === 'rainbet');
+                }
+
+                // Switch leaderboard title & header
+                if (platform === 'solpump') {
+                    leaderboardTitleText.textContent = 'SolPump Top Affiliates';
+                    wageredHeader.textContent = 'Wagered (SOL)';
+                    renderLeaderboard(solpumpData, 'solpump');
+                } else if (platform === 'rainbet') {
+                    leaderboardTitleText.textContent = 'Rainbet Top Affiliates';
+                    wageredHeader.textContent = 'Wagered (USD)';
+                    renderLeaderboard(rainbetData, 'rainbet');
+                }
+            }
+
             function renderLeaderboard(data, platform) {
                 leaderboardBody.innerHTML = '';
                 data.forEach((row, index) => {
@@ -1176,26 +1204,15 @@
             }
 
             // Initial render
-            renderLeaderboard(solpumpData, 'solpump');
+            switchPlatform('solpump');
 
-            // Tab functionality
+            // Tab functionality — switches promo + leaderboard together
             const filterBtns = document.querySelectorAll('.filter-btn');
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     filterBtns.forEach(b => b.classList.remove('active'));
                     e.target.classList.add('active');
-
-                    const platform = e.target.dataset.platform;
-
-                    if (platform === 'solpump') {
-                        leaderboardTitleText.textContent = 'SolPump Top Affiliates';
-                        wageredHeader.textContent = 'Wagered (SOL)';
-                        renderLeaderboard(solpumpData, 'solpump');
-                    } else if (platform === 'rainbet') {
-                        leaderboardTitleText.textContent = 'Rainbet Top Affiliates';
-                        wageredHeader.textContent = 'Wagered (USD)';
-                        renderLeaderboard(rainbetData, 'rainbet');
-                    }
+                    switchPlatform(e.target.dataset.platform);
                 });
             });
         }
