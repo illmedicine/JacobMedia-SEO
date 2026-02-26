@@ -322,6 +322,91 @@
         .cave-link-icon.icon-yeet { background: rgba(255, 60, 120, 0.1); color: #ff3c78; }
         .cave-link-icon.icon-rugs { background: rgba(160, 120, 255, 0.1); color: #a078ff; }
 
+        .cave-link-icon.icon-crypto { background: rgba(0, 200, 255, 0.1); color: #00c8ff; }
+        .cave-link-icon.icon-meme { background: rgba(255, 200, 0, 0.1); color: #ffc800; }
+        .cave-link-icon.icon-petition { background: rgba(255, 90, 90, 0.1); color: #ff5a5a; }
+        .cave-link-icon.icon-social { background: rgba(88, 101, 242, 0.1); color: #5865F2; }
+
+        /* Project cards with preview */
+        .cave-project-card {
+            background: var(--kick-surface);
+            border: 1px solid var(--kick-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .cave-project-card:hover {
+            border-color: var(--cave-fire);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.1);
+        }
+        .cave-project-preview {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+        .cave-project-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .cave-project-card:hover .cave-project-preview img {
+            transform: scale(1.05);
+        }
+        .cave-project-body {
+            padding: 16px 20px 20px;
+        }
+        .cave-project-body h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--kick-text);
+            margin-bottom: 6px;
+        }
+        .cave-project-body p {
+            font-size: 0.8rem;
+            color: var(--kick-text-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .cave-project-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .cave-project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .cave-project-link-live {
+            background: rgba(83, 252, 24, 0.1);
+            color: var(--cave-accent);
+        }
+        .cave-project-link-live:hover { background: rgba(83, 252, 24, 0.2); }
+        .cave-project-link-gh {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--kick-text-muted);
+        }
+        .cave-project-link-gh:hover { background: rgba(255, 255, 255, 0.1); color: var(--kick-text); }
+
+        .cave-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
         .cave-link-text h4 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.95rem;
@@ -583,6 +668,69 @@
                     <div class="cave-link-text">
                         <h4>YouTube</h4>
                         <p>@BomboGames</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects / Businesses / Apps -->
+    <section class="cave-section" id="projects">
+        <div class="container" style="max-width: 1100px;">
+            <div class="kick-section-header">
+                <h2 class="kick-section-title">Projects / Businesses / Apps</h2>
+                <a href="index.html#projects" class="kick-view-all">View all →</a>
+            </div>
+            <div class="cave-projects-grid">
+                <a href="https://illmedicine.github.io/DisCryptoBankWebSite/" target="_blank" rel="noopener" class="cave-project-card">
+                    <div class="cave-project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/DisCryptoBankWebSite" alt="DisCryptoBank preview" loading="lazy">
+                    </div>
+                    <div class="cave-project-body">
+                        <h4>🏦 DisCryptoBank</h4>
+                        <p>Crypto banking platform with security features, pot-split gambling, wallet guides &amp; event management.</p>
+                        <div class="cave-project-links">
+                            <span class="cave-project-link cave-project-link-live">● Live Site</span>
+                            <span class="cave-project-link cave-project-link-gh">Crypto / Web3</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://github.com/jacob-media/Meme-Responder" target="_blank" rel="noopener" class="cave-project-card">
+                    <div class="cave-project-preview">
+                        <img src="https://opengraph.githubassets.com/1/jacob-media/Meme-Responder" alt="Meme-Responder preview" loading="lazy">
+                    </div>
+                    <div class="cave-project-body">
+                        <h4>😂 Meme-Responder</h4>
+                        <p>Submit conversation screenshots and get AI-generated meme responses using web search &amp; AI.</p>
+                        <div class="cave-project-links">
+                            <span class="cave-project-link cave-project-link-gh">AI / Web Service</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://illmedicine.github.io/LivePay-Petition-Suppot/#top" target="_blank" rel="noopener" class="cave-project-card">
+                    <div class="cave-project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/LivePay-Petition-Suppot" alt="LivePay Petition preview" loading="lazy">
+                    </div>
+                    <div class="cave-project-body">
+                        <h4>📜 LivePay Petition</h4>
+                        <p>Petition &amp; donation platform for the Data Ownership &amp; Fair Revenue Act with PayPal integration.</p>
+                        <div class="cave-project-links">
+                            <span class="cave-project-link cave-project-link-live">● Live Site</span>
+                            <span class="cave-project-link cave-project-link-gh">FinTech</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://illmedicine.github.io/illysocialV2/" target="_blank" rel="noopener" class="cave-project-card">
+                    <div class="cave-project-preview">
+                        <img src="https://opengraph.githubassets.com/1/illmedicine/illysocialV2" alt="illysocial V2 preview" loading="lazy">
+                    </div>
+                    <div class="cave-project-body">
+                        <h4>🌐 illysocial V2</h4>
+                        <p>Social networking frontend for the illyRobotic ecosystem with Discord Partners Network integration.</p>
+                        <div class="cave-project-links">
+                            <span class="cave-project-link cave-project-link-live">● Live Site</span>
+                            <span class="cave-project-link cave-project-link-gh">Social Platform</span>
+                        </div>
                     </div>
                 </a>
             </div>
