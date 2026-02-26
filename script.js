@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     document.querySelectorAll(
-        '.section-header, .feature-card, .sol-card, .video-card, .cta-card, .stream-embed'
+        '.section-header, .feature-card, .sol-card, .video-card, .cta-card, .stream-embed, .content-showcase, .kick-vod-card'
     ).forEach(el => observer.observe(el));
 
     // Counter animation for hero stats
