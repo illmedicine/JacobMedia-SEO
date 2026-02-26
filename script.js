@@ -143,16 +143,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // SolPump Leaderboard Data
     const leaderboardData = [
-        { user: 'YNSage', wagered: 8.6803, commission: 0.0084, lastSeen: '12/27/2025' },
-        { user: 'JayWooki', wagered: 1.1610, commission: 0.0003, lastSeen: '12/13/2025' },
-        { user: 'WTOMXX', wagered: 0.6115, commission: 0.0004, lastSeen: '12/28/2025' },
-        { user: 'WTOMX', wagered: 0.2117, commission: 0.0002, lastSeen: '12/18/2025' },
-        { user: 'jusagamblerkick', wagered: 0.1898, commission: 0.0000, lastSeen: '12/17/2025' },
-        { user: 'Victamna', wagered: 0.1214, commission: 0.0000, lastSeen: '01/18/2026' },
-        { user: 'BAKASTA987', wagered: 0.1078, commission: 0.0001, lastSeen: '12/17/2025' },
-        { user: 'WAGURIANYA090', wagered: 0.0771, commission: 0.0000, lastSeen: '12/17/2025' },
-        { user: 'IAMKURUSO', wagered: 0.0701, commission: 0.0000, lastSeen: '12/17/2025' },
-        { user: 'KICK-YOPOPPA', wagered: 0.0689, commission: 0.0000, lastSeen: '12/17/2025' }
+        { user: 'YNSage', wagered: 8.6803, lastSeen: '12/27/2025' },
+        { user: 'JayWooki', wagered: 1.1610, lastSeen: '12/13/2025' },
+        { user: 'WTOMXX', wagered: 0.6115, lastSeen: '12/28/2025' },
+        { user: 'WTOMX', wagered: 0.2117, lastSeen: '12/18/2025' },
+        { user: 'jusagamblerkick', wagered: 0.1898, lastSeen: '12/17/2025' },
+        { user: 'Victamna', wagered: 0.1214, lastSeen: '01/18/2026' },
+        { user: 'BAKASTA987', wagered: 0.1078, lastSeen: '12/17/2025' },
+        { user: 'WAGURIANYA090', wagered: 0.0771, lastSeen: '12/17/2025' },
+        { user: 'IAMKURUSO', wagered: 0.0701, lastSeen: '12/17/2025' },
+        { user: 'KICK-YOPOPPA', wagered: 0.0689, lastSeen: '12/17/2025' }
     ];
 
     const leaderboardBody = document.getElementById('leaderboard-body');
@@ -184,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </svg>
                         ${row.wagered.toFixed(4)}
                     </td>
-                    <td class="commission-cell">${row.commission.toFixed(4)}</td>
                     <td class="date-cell">${row.lastSeen}</td>
                 `;
                 leaderboardBody.appendChild(tr);
@@ -206,8 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (sortType === 'wagered') {
                     sortedData.sort((a, b) => b.wagered - a.wagered);
-                } else if (sortType === 'commission') {
-                    sortedData.sort((a, b) => b.commission - a.commission);
                 }
                 
                 renderLeaderboard(sortedData);

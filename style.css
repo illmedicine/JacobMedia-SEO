@@ -670,6 +670,12 @@ img {
     color: var(--sol-purple);
 }
 
+.tag-rainbet {
+    background: rgba(46, 54, 92, 0.1);
+    color: #fff;
+    border: 1px solid rgba(46, 54, 92, 0.5);
+}
+
 .section-title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2rem, 5vw, 3.2rem);
@@ -684,6 +690,9 @@ img {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+.text-rainbet {
+    color: #2E365C;
 }
 
 .text-gradient {
