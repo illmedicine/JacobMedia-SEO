@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yopoppa's Cave | The Stream Den</title>
+    <meta name="description" content="Welcome to The YoPoppa's Cave. Streams, vibes, degen plays, and community shenanigans.">
+    <meta name="keywords" content="Yopoppa, poppayo, Kick streamer, Discord, The YoPoppa's Cave, gaming, crypto">
+    <meta property="og:title" content="Yopoppa's Cave | The Stream Den">
+    <meta property="og:description" content="Welcome to the cave. Streams, vibes, and degen energy.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦇</text></svg>" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --cave-accent: #53fc18;
+            --cave-purple: #b44dff;
+            --cave-orange: #ff6b35;
+            --cave-glow: rgba(83, 252, 24, 0.25);
+        }
+
+        .cave-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: calc(var(--nav-height) + 40px) 24px 40px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .cave-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(83, 252, 24, 0.08);
+            border: 1px solid rgba(83, 252, 24, 0.2);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--cave-accent);
+            margin-bottom: 28px;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .cave-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 12vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .cave-title .line1 {
+            display: block;
+            color: var(--text-primary);
+            animation: fadeInUp 0.7s ease 0.1s both;
+        }
+
+        .cave-title .line2 {
+            display: block;
+            background: linear-gradient(135deg, var(--cave-accent), var(--cave-purple), var(--cave-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 300% 300%;
+            animation: caveGradient 4s ease-in-out infinite, fadeInUp 0.7s ease 0.2s both;
+        }
+
+        @keyframes caveGradient {
+            0%, 100% { background-position: 0% 50%; }
+            33% { background-position: 100% 0%; }
+            66% { background-position: 50% 100%; }
+        }
+
+        .cave-sub {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            animation: fadeInUp 0.7s ease 0.3s both;
+        }
+
+        .cave-sub .highlight {
+            color: var(--cave-accent);
+            font-weight: 600;
+        }
+
+        .cave-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.7s ease 0.4s both;
+        }
+
+        .btn-cave-kick {
+            background: var(--kick);
+            color: #000;
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all var(--transition-fast);
+            box-shadow: 0 0 25px var(--cave-glow);
+        }
+
+        .btn-cave-kick:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 40px var(--cave-glow);
+        }
+
+        .btn-cave-discord {
+            background: var(--discord);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all var(--transition-fast);
+            box-shadow: 0 0 25px var(--discord-glow);
+        }
+
+        .btn-cave-discord:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 40px var(--discord-glow);
+        }
+
+        /* Stream Section */
+        .cave-section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cave-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .cave-section-desc {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .cave-stream-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 2px solid rgba(83, 252, 24, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: border-color 0.3s ease;
+        }
+
+        .cave-stream-card:hover {
+            border-color: rgba(83, 252, 24, 0.35);
+        }
+
+        .cave-stream-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .cave-stream-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .cave-stream-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cave-stream-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .cave-stream-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Links Grid */
+        .cave-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cave-link-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .cave-link-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--cave-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(83, 252, 24, 0.08);
+        }
+
+        .cave-link-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .cave-link-icon.icon-kick { background: rgba(83, 252, 24, 0.1); color: var(--kick); }
+        .cave-link-icon.icon-ig { background: rgba(225, 48, 108, 0.1); color: #E1306C; }
+        .cave-link-icon.icon-tt { background: rgba(255, 255, 255, 0.06); color: #fff; }
+        .cave-link-icon.icon-yt { background: rgba(255, 0, 0, 0.1); color: #FF0000; }
+        .cave-link-icon.icon-discord { background: rgba(88, 101, 242, 0.12); color: var(--discord); }
+        .cave-link-icon.icon-sol { background: rgba(153, 69, 255, 0.1); color: var(--sol-purple); }
+        .cave-link-icon.icon-rainbet { background: rgba(0, 255, 136, 0.08); color: #00FF88; }
+        .cave-link-icon.icon-stake { background: rgba(0, 120, 255, 0.1); color: #0078FF; }
+        .cave-link-icon.icon-gemini { background: rgba(0, 220, 250, 0.08); color: #00dcfa; }
+        .cave-link-icon.icon-gamba { background: rgba(255, 200, 0, 0.1); color: #ffc800; }
+        .cave-link-icon.icon-tucan { background: rgba(255, 120, 0, 0.1); color: #ff7800; }
+        .cave-link-icon.icon-yeet { background: rgba(255, 60, 120, 0.1); color: #ff3c78; }
+        .cave-link-icon.icon-rugs { background: rgba(160, 120, 255, 0.1); color: #a078ff; }
+
+        .cave-link-text h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+
+        .cave-link-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Affiliates Section */
+        .cave-affiliates {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .cave-aff-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(153, 69, 255, 0.08);
+            border: 1px solid rgba(153, 69, 255, 0.15);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--sol-purple);
+            margin-bottom: 16px;
+        }
+
+        /* CTA Bar */
+        .cave-cta {
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cave-cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cave-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Back link */
+        .cave-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 12px 0;
+            transition: color var(--transition-fast);
+        }
+
+        .cave-back:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 640px) {
+            .cave-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cave-buttons a {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            .cave-stream-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="bg-grid"></div>
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="bg-glow glow-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon" style="color: var(--kick);">&#9670;</span>
+                <span class="logo-text" style="font-size: 1.1rem;">YO<span class="logo-accent" style="background: linear-gradient(135deg, var(--kick), #b44dff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">POPPA</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">JACOBMEDIA</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="yopoppa.html" class="nav-link active" style="color: var(--kick);">The Cave</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick btn-sm">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/>
+                    </svg>
+                    Watch Live
+                </a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">JACOBMEDIA</a>
+        <a href="contact.html" class="mobile-link">Contact</a>
+        <a href="yopoppa.html" class="mobile-link" style="color: var(--kick);">The Cave</a>
+        <div class="mobile-actions">
+            <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick">Watch on Kick</a>
+            <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" class="btn btn-discord">Join Discord</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="cave-hero">
+        <div class="cave-badge">
+            <span class="pulse-dot"></span>
+            WELCOME TO THE CAVE
+        </div>
+        <h1 class="cave-title">
+            <span class="line1">YOPOPPA'S</span>
+            <span class="line2">CAVE</span>
+        </h1>
+        <p class="cave-sub">
+            The home of <span class="highlight">Yopoppa</span> — streams, vibes, degen plays, and community chaos. Pull up a chair.
+        </p>
+        <div class="cave-buttons">
+            <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn-cave-kick">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/></svg>
+                Watch on Kick
+            </a>
+            <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" class="btn-cave-discord">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                Join The Cave
+            </a>
+        </div>
+    </section>
+
+    <!-- Live Stream -->
+    <section class="cave-section" id="stream">
+        <div class="container">
+            <h2 class="cave-section-title">Catch the <span style="color: var(--cave-accent);">Stream</span></h2>
+            <p class="cave-section-desc">Live on Kick as Yopoppa — drop in and say what's good.</p>
+            <div class="cave-stream-card">
+                <div class="cave-stream-embed">
+                    <iframe src="https://player.kick.com/poppayo" allowfullscreen="true"></iframe>
+                </div>
+                <div class="cave-stream-info">
+                    <div>
+                        <h3>Yopoppa Live</h3>
+                        <p>Kick.com/poppayo</p>
+                    </div>
+                    <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="btn btn-kick btn-sm">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/></svg>
+                        Open in Kick
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Socials -->
+    <section class="cave-section" id="socials">
+        <div class="container">
+            <h2 class="cave-section-title">The <span style="color: var(--cave-purple);">Socials</span></h2>
+            <p class="cave-section-desc">All the places you can find Yopoppa.</p>
+            <div class="cave-links-grid">
+                <a href="https://kick.com/poppayo" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-kick">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1.333 0v24h5.338v-6.257L9.6 14.82l3.263 9.18h5.88L13.2 10.327 18.427 0h-5.62l-6.136 9.853V0z"/></svg>
+                    </div>
+                    <div class="cave-link-text">
+                        <h4>Kick</h4>
+                        <p>poppayo — Live streams</p>
+                    </div>
+                </a>
+                <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-discord">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                    </div>
+                    <div class="cave-link-text">
+                        <h4>Discord</h4>
+                        <p>The YoPoppa's Cave</p>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/yopoppa.media/" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-ig">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </div>
+                    <div class="cave-link-text">
+                        <h4>Instagram</h4>
+                        <p>@yopoppa.media</p>
+                    </div>
+                </a>
+                <a href="https://www.tiktok.com/@yopoppa1?lang=en" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-tt">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.1z"/></svg>
+                    </div>
+                    <div class="cave-link-text">
+                        <h4>TikTok</h4>
+                        <p>@yopoppa1</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/@BomboGames" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-yt">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </div>
+                    <div class="cave-link-text">
+                        <h4>YouTube</h4>
+                        <p>@BomboGames</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliates -->
+    <section class="cave-section cave-affiliates" id="affiliates">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="cave-aff-tag">AFFILIATE LINKS</span>
+            </div>
+            <h2 class="cave-section-title">Degen <span style="color: var(--cave-orange);">Links</span></h2>
+            <p class="cave-section-desc">Support the stream — use the codes. You know the drill.</p>
+            <div class="cave-links-grid">
+                <a href="https://solpump.io/a/YOPOPPA" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-sol">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 15h10l-2-3H9l-2 3zm0-4h10l-2-3H9l-2 3z" fill="currentColor"/></svg>
+                    </div>
+                    <div class="cave-link-text">
+                        <h4>SolPump</h4>
+                        <p>Code: YOPOPPA</p>
+                    </div>
+                </a>
+                <a href="https://rainbet.com?r=yopoppa4" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-rainbet">💎</div>
+                    <div class="cave-link-text">
+                        <h4>Rainbet</h4>
+                        <p>Code: yopoppa4</p>
+                    </div>
+                </a>
+                <a href="https://stake.us/?c=XfnkQ92w" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-stake">🎰</div>
+                    <div class="cave-link-text">
+                        <h4>Stake.us</h4>
+                        <p>Use referral link</p>
+                    </div>
+                </a>
+                <a href="https://exchange.gemini.com/register?referral=mkxnxk7h7&type=referral" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-gemini">♊</div>
+                    <div class="cave-link-text">
+                        <h4>Gemini</h4>
+                        <p>Crypto exchange</p>
+                    </div>
+                </a>
+                <a href="https://gamba.com?c=yopoppagames" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-gamba">🎲</div>
+                    <div class="cave-link-text">
+                        <h4>Gamba</h4>
+                        <p>Code: yopoppagames</p>
+                    </div>
+                </a>
+                <a href="https://tucanbit.io?affcode=PBt5iNz0tdy6b" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-tucan">🦜</div>
+                    <div class="cave-link-text">
+                        <h4>Tucanbit</h4>
+                        <p>Use referral link</p>
+                    </div>
+                </a>
+                <a href="https://yeet.com/register?aff=yopoppa" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-yeet">🚀</div>
+                    <div class="cave-link-text">
+                        <h4>Yeet</h4>
+                        <p>Code: yopoppa</p>
+                    </div>
+                </a>
+                <a href="https://rugs.fun/?start=REF_RPE6BLF3O9BU" target="_blank" rel="noopener" class="cave-link-card">
+                    <div class="cave-link-icon icon-rugs">🎯</div>
+                    <div class="cave-link-text">
+                        <h4>Rugs.fun</h4>
+                        <p>Use referral link</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cave-cta">
+        <h2>Ready to <span style="color: var(--cave-accent);">pull up?</span></h2>
+        <p>Join The YoPoppa's Cave on Discord — where the real ones hang.</p>
+        <div class="cave-buttons">
+            <a href="https://discord.gg/fDNHdGyee8" target="_blank" rel="noopener" class="btn-cave-discord">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                Enter The Cave
+            </a>
+        </div>
+        <div style="margin-top: 24px;">
+            <a href="index.html" class="cave-back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                    <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Back to JACOBMEDIA
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Yopoppa. Part of <a href="index.html" style="color: var(--text-secondary); text-decoration: underline;">JACOBMEDIA</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // Navbar bg on scroll
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            navbar.style.background = window.scrollY > 50 ? 'rgba(10, 10, 15, 0.95)' : 'rgba(10, 10, 15, 0.8)';
+        }, { passive: true });
+    </script>
+</body>
+</html>

@@ -300,6 +300,16 @@ img {
     width: 100%;
 }
 
+/* Yopoppa's Cave special nav link */
+.nav-link-cave {
+    color: var(--kick) !important;
+    font-weight: 600;
+}
+
+.nav-link-cave::after {
+    background: var(--kick) !important;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
