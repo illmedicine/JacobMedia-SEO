@@ -216,6 +216,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const platformInfoSolpump = document.getElementById('platform-info-solpump');
         const platformInfoRainbet = document.getElementById('platform-info-rainbet');
 
+        function triggerFadeIn(element) {
+            if (!element) return;
+            element.classList.remove('fade-in');
+            void element.offsetWidth; // trigger reflow
+            element.classList.add('fade-in');
+        }
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 filterBtns.forEach(b => b.classList.remove('active'));
@@ -226,15 +233,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (platform === 'solpump') {
                     leaderboardTitleText.textContent = 'SolPump Top Affiliates';
                     wageredHeader.textContent = 'Wagered (SOL)';
-                    if (platformInfoSolpump) platformInfoSolpump.style.display = 'block';
+                    if (platformInfoSolpump) {
+                        platformInfoSolpump.style.display = 'block';
+                        triggerFadeIn(platformInfoSolpump);
+                    }
                     if (platformInfoRainbet) platformInfoRainbet.style.display = 'none';
                     renderLeaderboard(solpumpData, 'solpump');
+                    triggerFadeIn(leaderboardBody);
                 } else if (platform === 'rainbet') {
                     leaderboardTitleText.textContent = 'Rainbet Top Affiliates';
                     wageredHeader.textContent = 'Wagered (USD)';
                     if (platformInfoSolpump) platformInfoSolpump.style.display = 'none';
-                    if (platformInfoRainbet) platformInfoRainbet.style.display = 'block';
+                    if (platformInfoRainbet) {
+                        platformInfoRainbet.style.display = 'block';
+                        triggerFadeIn(platformInfoRainbet);
+                    }
                     renderLeaderboard(rainbetData, 'rainbet');
+                    triggerFadeIn(leaderboardBody);
                 }
             });
         });
